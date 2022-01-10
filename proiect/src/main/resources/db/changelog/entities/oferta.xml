@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="1" author="lorena">
+        <createSequence sequenceName="oferte_seq" startValue="50" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="2" author="lorena">
+        <createTable tableName="oferte">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="user_oferta_fk" references="users(id)"
+                             nullable="false" />
+            </column>
+
+            <column name="camion_id" type="bigint">
+                <constraints foreignKeyName="camion_fk" references="camioane(id)"
+                             nullable="false" />
+            </column>
+
+            <column name="loc_plecare" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tip_marfa" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="loc_sosire" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="data_plecare"  type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="data_sosire"  type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="pret_camion_gol" type="DECIMAL(6,2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="pret_camion_plin" type="DECIMAL(6,2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="masa" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="buget" type="DECIMAL(6,2)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="volum" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="detalii" type="clob">
+            </column>
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
