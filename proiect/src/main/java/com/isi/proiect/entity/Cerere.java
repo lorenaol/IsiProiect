@@ -39,7 +39,7 @@ public class Cerere {
 
     private Long masa;
 
-    private Long buget;
+    private double buget;
 
     private Long volum;
 
@@ -123,11 +123,11 @@ public class Cerere {
         this.masa = masa;
     }
 
-    public Long getBuget() {
+    public double getBuget() {
         return buget;
     }
 
-    public void setBuget(Long buget) {
+    public void setBuget(double buget) {
         this.buget = buget;
     }
 

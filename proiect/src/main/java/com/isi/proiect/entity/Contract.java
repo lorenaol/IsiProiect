@@ -23,7 +23,7 @@ public class Contract {
     @JoinColumn(name = "camion_id", referencedColumnName = "id", nullable = false)
     private Camion camion;
 
-    private Long cost;
+    private double cost;
 
     @Column(name = "termen_plata")
     private Date termenPlata;
@@ -40,6 +40,84 @@ public class Contract {
     @Column(name = "instructiuni_speciale")
     private String instructiuniSpeciale;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Cerere getCerere() {
+        return cerere;
+    }
+
+    public void setCerere(Cerere cerere) {
+        this.cerere = cerere;
+    }
+
+    public Oferta getOferta() {
+        return oferta;
+    }
+
+    public void setOferta(Oferta oferta) {
+        this.oferta = oferta;
+    }
+
+    public Camion getCamion() {
+        return camion;
+    }
+
+    public void setCamion(Camion camion) {
+        this.camion = camion;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public Date getTermenPlata() {
+        return termenPlata;
+    }
+
+    public void setTermenPlata(Date termenPlata) {
+        this.termenPlata = termenPlata;
+    }
+
+    public String getLocPlecare() {
+        return locPlecare;
+    }
+
+    public void setLocPlecare(String locPlecare) {
+        this.locPlecare = locPlecare;
+    }
+
+    public String getLocDescarcare() {
+        return locDescarcare;
+    }
+
+    public void setLocDescarcare(String locDescarcare) {
+        this.locDescarcare = locDescarcare;
+    }
+
+    public String getDetaliiMarfa() {
+        return detaliiMarfa;
+    }
+
+    public void setDetaliiMarfa(String detaliiMarfa) {
+        this.detaliiMarfa = detaliiMarfa;
+    }
+
+    public String getInstructiuniSpeciale() {
+        return instructiuniSpeciale;
+    }
+
+    public void setInstructiuniSpeciale(String instructiuniSpeciale) {
+        this.instructiuniSpeciale = instructiuniSpeciale;
+    }
 }
 

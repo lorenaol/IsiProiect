@@ -36,15 +36,15 @@ public class Oferta {
 
     private Long masa;
 
-    private Long buget;
+    private double buget;
 
     private Long volum;
 
     @Column(name = "pret_camion_gol", length = 100)
-    private Long pretCamionGol;
+    private double pretCamionGol;
 
     @Column(name = "pret_camion_plin", length = 100)
-    private Long pretCamionPlin;
+    private double pretCamionPlin;
 
     private String detalii;
 
@@ -120,11 +120,11 @@ public class Oferta {
         this.masa = masa;
     }
 
-    public Long getBuget() {
+    public double getBuget() {
         return buget;
     }
 
-    public void setBuget(Long buget) {
+    public void setBuget(double buget) {
         this.buget = buget;
     }
 
@@ -136,19 +136,19 @@ public class Oferta {
         this.volum = volum;
     }
 
-    public Long getPretCamionGol() {
+    public double getPretCamionGol() {
         return pretCamionGol;
     }
 
-    public void setPretCamionGol(Long pretCamionGol) {
+    public void setPretCamionGol(double pretCamionGol) {
         this.pretCamionGol = pretCamionGol;
     }
 
-    public Long getPretCamionPlin() {
+    public double getPretCamionPlin() {
         return pretCamionPlin;
     }
 
-    public void setPretCamionPlin(Long pretCamionPlin) {
+    public void setPretCamionPlin(double pretCamionPlin) {
         this.pretCamionPlin = pretCamionPlin;
     }
 
