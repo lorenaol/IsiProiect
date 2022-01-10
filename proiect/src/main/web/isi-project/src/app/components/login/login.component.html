@@ -1,0 +1,30 @@
+<mat-card class="login-card">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <h1 class="toolbar-title">Logheaza-te:</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="edit-dialog">
+    <form [formGroup]="loginForm">
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Email </mat-label>
+          <input matInput formControlName="email" [(ngModel)]="userEmail">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Parola </mat-label>
+          <input type="password" matInput formControlName="password" [(ngModel)]="userPassword">
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="card">
+      <h4 class="status">{{this.status}}</h4>
+    </div>
+  </div>
+
+  <button mat-raised-button class="login-button" (click)="onClick()"> Log in </button>
+
+</mat-card>

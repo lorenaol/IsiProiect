@@ -1,0 +1,47 @@
+.login-card {
+  width: 600px;
+  height: 450px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.toolbar {
+  background: rgba(12, 30, 76, 0.7);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.toolbar-title {
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: x-large;
+}
+
+.elem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  width:350px !important;
+  padding-top: 40px;
+}
+
+.login-button {
+  background: rgba(12, 30, 76, 0.12);
+  color: rgb(12, 30, 76);
+  height: 50px;
+  width: 100px;
+  font-size: larger;
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+.status {
+  color: #d50707;
+  text-align: center
+}
+
