@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="1" author="lorena">
+        <createSequence sequenceName="contracte_seq" startValue="50" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="2" author="lorena">
+        <createTable tableName="contracte">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+
+            <column name="cerere_id" type="bigint">
+                <constraints foreignKeyName="cerere_fk" references="cereri(id)"
+                             nullable="false" />
+            </column>
+
+            <column name="oferta_id" type="bigint">
+                <constraints foreignKeyName="oferta_fk" references="oferte(id)"
+                             nullable="false" />
+            </column>
+
+            <column name="camion_id" type="bigint">
+                <constraints foreignKeyName="camion_contract_fk" references="camioane(id)"
+                             nullable="false" />
+            </column>
+
+            <column name="cost" type="DECIMAL(6,2)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="termen_plata"  type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="loc_incarcare" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="loc_descarcare" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="detalii_marfa" type="clob">
+            </column>
+
+            <column name="instructiuni_speciale" type="clob">
+            </column>
+
+
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
