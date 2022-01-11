@@ -14,13 +14,16 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-b
 import { RegisterComponent } from './components/register/register.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { HomeComponent } from './components/home/home.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
     NoopAnimationsModule,
     MatSelectModule,
     MatOptionModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

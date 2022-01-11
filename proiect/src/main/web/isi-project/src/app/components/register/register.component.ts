@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {RegisterUserModel} from "../../models/register-user.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -25,12 +26,14 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(public formBuilder: FormBuilder,
-              public snackBar: MatSnackBar) { }
+              public snackBar: MatSnackBar,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
+    this.popupMessage = undefined;
     this.userModel.name = this.registerForm.value.name;
     this.userModel.email = this.registerForm.value.email;
     this.userModel.phoneNumber = this.registerForm.value.phoneNumber;
@@ -66,6 +69,8 @@ export class RegisterComponent implements OnInit {
         horizontalPosition: 'start',
         verticalPosition: 'bottom'
       });
+    } else {
+      this.router.navigate(['/home']);
     }
   }
 

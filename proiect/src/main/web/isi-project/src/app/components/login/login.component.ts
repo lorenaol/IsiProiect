@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   userPassword: string | undefined;
   status = '';
 
-  constructor(public formBuilder: FormBuilder
+  constructor(public formBuilder: FormBuilder,
+              private router: Router
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
@@ -33,6 +35,10 @@ export class LoginComponent implements OnInit {
       }
     );
     console.log(this.loginForm.value);
+  }
+
+  clickCreate(): void {
+    this.router.navigate(['/register']);
   }
 
 }
