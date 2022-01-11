@@ -1,1 +1,117 @@
 <button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
+
+<mat-card class="create-offer-card">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <h1 class="toolbar-title">Detalii Oferta</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="offer-dialog">
+    <form [formGroup]="createOfferDetailsForm">
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data plecare (ZZ/LL/AAAA)</mat-label>
+          <input matInput formControlName="dataPlecare">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data sosire  (ZZ/LL/AAAA)</mat-label>
+          <input matInput formControlName="dataSosire">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Loc plecare </mat-label>
+          <input matInput formControlName="locPlecare">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Loc sosire </mat-label>
+          <input matInput formControlName="locSosire">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Pret camion gol lei/km </mat-label>
+          <input matInput formControlName="pretGol">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Pret camion plin lei/km</mat-label>
+          <input matInput formControlName="pretPlin">
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <h1 class="toolbar-title">Detalii Camion</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="offer-dialog">
+    <form [formGroup]="truckDetailsForm">
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Tip camion (marca) </mat-label>
+          <input matInput formControlName="tip">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Volum (m<sup>3</sup>) </mat-label>
+          <input matInput formControlName="volum">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Lungime (m) </mat-label>
+          <input matInput formControlName="lungime">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Latime (m) </mat-label>
+          <input matInput formControlName="latime">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Inaltime (m) </mat-label>
+          <input matInput formControlName="inaltime">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Greutate (tone) </mat-label>
+          <input matInput formControlName="greutate">
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+  <button mat-raised-button class="add-offer-button" (click)="addOfferClick()" > Adauga </button>
+
+  <br>
+  <br>
+  <br>
+  <br>
+</mat-card>
