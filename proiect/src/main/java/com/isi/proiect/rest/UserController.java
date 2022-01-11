@@ -38,4 +38,6 @@ public class UserController {
     public void deleteUser(@RequestBody User user) {
         userService.deleteUser(user);
     }
+
+
 }

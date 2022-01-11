@@ -1,5 +1,6 @@
 package com.isi.proiect.serviceImpl;
 
+import com.isi.proiect.dtos.LoginDto;
 import com.isi.proiect.entity.User;
 import com.isi.proiect.repository.UserRepository;
 import com.isi.proiect.service.UserService;
@@ -32,5 +33,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(User user) {
         userRepository.delete(user);
+    }
+
+    @Override
+    public User checkUserLogin(LoginDto loginDto) {
+        if (this.userRepository.existsByEmail(loginDto.getEmail())) {
+            User user = this.userRepository.findByEmail(loginDto.getEmail());
+            if (user.getPassword().equals(loginDto.getPassword())) {
+                return user;
+            }
+        }
+        return new User();
     }
 }

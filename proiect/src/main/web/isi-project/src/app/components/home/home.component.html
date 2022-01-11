@@ -6,28 +6,28 @@
 </p>
 
 <div class="buttons">
-  <button mat-raised-button class="createButton">
+  <button mat-raised-button class="createButton" (click)="clickCreateOffer()">
     <a class="text">Creeaza</a>
     <br>
     <a class="text">cerere/oferta</a>
   </button>
-  <button mat-raised-button color="" class="mapButton">
+  <button mat-raised-button color="" class="mapButton" (click)="clickMap()">
     <a class="text">Harta</a>
   </button>
-  <button mat-raised-button class="profileButton">
+  <button mat-raised-button class="profileButton" (click)="clickMyProfile()">
     <a class="text">Datele mele</a>
   </button>
-  <button mat-raised-button class="viewButton">
+  <button mat-raised-button class="viewButton" (click)="clickViewOffers()">
     <a class="text">Vizualizare</a>
     <br>
     <a class="text">cereri/oferte</a>
   </button>
-  <button mat-raised-button class="filesButton">
+  <button mat-raised-button class="filesButton" (click)="clickMyContracts()">
     <a class="text">Contractele</a>
     <br>
     <a class="text">mele</a>
   </button>
-  <button mat-raised-button class="logoutButton">
+  <button mat-raised-button class="logoutButton" (click)="logout()">
     <a class="text">Log out</a>
   </button>
 </div>
