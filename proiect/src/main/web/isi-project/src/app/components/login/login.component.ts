@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
+import {LoginDataModel} from "../../models/login-data.model";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -9,32 +11,41 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginData = new LoginDataModel();
   userEmail: string | undefined;
   userPassword: string | undefined;
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
   status = '';
 
   constructor(public formBuilder: FormBuilder,
-              private router: Router
+              private router: Router,
+              public loginService: LoginService
   ) {
-    this.loginForm = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl('')
-    });
   }
 
   ngOnInit(): void {
-    console.log('aicii');
   }
 
   onClick(): void {
-    this.loginForm = this.formBuilder.group(
+      this.formBuilder.group(
       {
         email: [this.userEmail],
         password: [this.userPassword]
       }
     );
-    console.log(this.loginForm.value);
+    // this.loginData.email = this.loginForm.value.email;
+    // this.loginData.password = this.loginForm.value.password;
+    // this.loginService.verifyDataLogin(this.loginData).subscribe((result: any) => {
+    //   if (result !== null) {
+    //     console.log(result);
+    //   } else {
+    //     console.log("nuuuullll");
+    //   }
+    // })
+    // console.log(this.loginData);
   }
 
   clickCreate(): void {

@@ -17,13 +17,27 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { HomeComponent } from './components/home/home.component';
 import {MatIconModule} from "@angular/material/icon";
+import { CreateOfferComponent } from './components/create-offer/create-offer.component';
+import { ViewOffersComponent } from './components/view-offers/view-offers.component';
+import { CreateRequestComponent } from './components/create-request/create-request.component';
+import { ViewRequestsComponent } from './components/view-requests/view-requests.component';
+import { MapComponent } from './components/map/map.component';
+import { MyContractsComponent } from './components/my-contracts/my-contracts.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    CreateOfferComponent,
+    ViewOffersComponent,
+    CreateRequestComponent,
+    ViewRequestsComponent,
+    MapComponent,
+    MyContractsComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
