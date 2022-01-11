@@ -1,0 +1,77 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  background: rgba(12, 30, 76, 0.7);
+}
+
+.toolbar-title {
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: x-large;
+}
+
+.createButton {
+  margin-left: 15%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #0a0abd;
+  font-weight: bold;
+}
+
+.mapButton {
+  margin-left: 11%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #11a011;
+  font-weight: bold;
+}
+
+.profileButton {
+  margin-left: 11%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: purple;
+  font-weight: bold;
+}
+
+.viewButton {
+  margin-left: 15%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #a5432a;
+  font-weight: bold;
+}
+
+.filesButton {
+  margin-left: 11%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: orange;
+  font-weight: bold;
+}
+
+
+.logoutButton {
+  margin-left: 11%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #ee0606;
+  font-weight: bold;
+}
+
+.buttons {
+  height: 850px;
+}
+
+.text {
+  font-size: xx-large;
+}

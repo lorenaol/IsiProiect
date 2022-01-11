@@ -1,15 +1,15 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:ORCLCDB
-    username: sys as sysdba
-    password: Oradoc_db1
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: feedback
+    password: parola
   jpa:
     database-platform: org.hibernate.dialect.OracleDialect
     show-sql: true
     hibernate:
       ddl-auto: none
   liquibase:
-    enabled: true
+    enabled: false
     change-log: db/changelog/db.changelog-master.xml
   mail:
     default-encoding: UTF-8
