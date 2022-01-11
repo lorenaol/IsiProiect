@@ -5,3 +5,45 @@
   width: 100px;
   height: 50px;
 }
+
+.create-request-card {
+  width: 1000px;
+  height: 1500px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+.toolbar {
+  background: rgba(12, 30, 76, 0.7);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.toolbar-title {
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: x-large;
+}
+
+.elem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-form-field{
+  width:350px !important;
+  padding-top: 40px;
+}
+
+.add-request-button {
+  background: rgba(12, 30, 76, 0.12);
+  color: rgb(12, 30, 76);
+  height: 50px;
+  width: 10%;
+  font-size: larger;
+  margin-top: auto;
+  margin-left: 45%;
+}

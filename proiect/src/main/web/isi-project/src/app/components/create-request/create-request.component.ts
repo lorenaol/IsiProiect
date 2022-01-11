@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-create-request',
@@ -8,6 +9,22 @@ import {Router} from "@angular/router";
 })
 export class CreateRequestComponent implements OnInit {
 
+  createRequestDetailsForm = new FormGroup({
+    locPlecare: new FormControl(''),
+    dataPlecare: new FormControl(''),
+    dataMaximaPlecare: new FormControl(''),
+    locSosire: new FormControl(''),
+    dataSosire: new FormControl(''),
+    dataMaximaSosire: new FormControl(''),
+    tipMarfa: new FormControl(''),
+    masa: new FormControl(''),
+    volum: new FormControl(''),
+    buget: new FormControl(''),
+    detalii: new FormControl('')
+  });
+
+  selected: 'Mobila' | undefined;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,5 +32,9 @@ export class CreateRequestComponent implements OnInit {
 
   clickMenu(): void {
     this.router.navigate(['/home']);
+  }
+
+  addRequestClick(): void {
+
   }
 }

@@ -1,1 +1,110 @@
 <button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
+
+<mat-card class="create-request-card">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <h1 class="toolbar-title">Detalii Cerere</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="offer-dialog">
+    <form [formGroup]="createRequestDetailsForm">
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Loc plecare </mat-label>
+          <input matInput formControlName="locPlecare">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data plecare (ZZ/LL/AAAA)  </mat-label>
+          <input matInput formControlName="dataPlecare">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data maxima plecare (ZZ/LL/AAAA) </mat-label>
+          <input matInput formControlName="dataMaximaPlecare">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Loc sosire </mat-label>
+          <input matInput formControlName="locSosire">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data sosire (ZZ/LL/AAAA) </mat-label>
+          <input matInput formControlName="dataSosire">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Data maxima sosire (ZZ/LL/AAAA) </mat-label>
+          <input matInput formControlName="dataMaximaSosire">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Tip marfa </mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option value="mobila"> Mobila </mat-option>
+            <mat-option value="animale"> Animale </mat-option>
+            <mat-option value="alimente"> Alimente </mat-option>
+            <mat-option value="echipamenteMedicale"> Echipamente medicale </mat-option>
+            <mat-option value="autoturisme"> Autoturisme </mat-option>
+            <mat-option value="electronice"> Electronice </mat-option>
+            <mat-option value="utilaje"> Utilaje </mat-option>
+            <mat-option value="materuialeConstructii"> Materiale constructii </mat-option>
+            <mat-option value="pieseAuto"> Piese auto </mat-option>
+            <mat-option value="transportColete"> Transport colete </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Masa (Kg)</mat-label>
+          <input matInput formControlName="masa">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Volum (m<sup>3</sup>) </mat-label>
+          <input matInput formControlName="volum">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Buget disponibil (lei)</mat-label>
+          <input matInput formControlName="buget">
+        </mat-form-field>
+      </div>
+
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Alte detalii</mat-label>
+          <textarea matInput formControlName="detalii"></textarea>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+  <button mat-raised-button class="add-request-button" (click)="addRequestClick()" > Adauga </button>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+</mat-card>
