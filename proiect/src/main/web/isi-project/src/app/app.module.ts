@@ -24,12 +24,21 @@ import { ViewRequestsComponent } from './components/view-requests/view-requests.
 import { MapComponent } from './components/map/map.component';
 import { MyContractsComponent } from './components/my-contracts/my-contracts.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
+import {FirebaseService} from "./database/firebase";
+import {FirebaseMockService} from "./database/firebase-mock";
+import { ArcgisMapComponent } from './components/arcgis-map/arcgis-map.component';
+import {NbCardModule, NbListModule} from "@nebular/theme";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    HomeComponent,
+    ArcgisMapComponent,
     HomeComponent,
     CreateOfferComponent,
     ViewOffersComponent,
@@ -54,9 +63,15 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     MatSelectModule,
     MatOptionModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    NoopAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'proiectISI'),
+    AngularFireDatabaseModule,
+    NbCardModule,
+    NbListModule,
   ],
-  providers: [],
+  providers: [FirebaseService, FirebaseMockService],
+ // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
