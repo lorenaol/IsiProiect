@@ -10,6 +10,7 @@ import {ViewRequestsComponent} from "./components/view-requests/view-requests.co
 import {MapComponent} from "./components/map/map.component";
 import {MyContractsComponent} from "./components/my-contracts/my-contracts.component";
 import {MyProfileComponent} from "./components/my-profile/my-profile.component";
+import {ArcgisMapComponent} from "./components/arcgis-map/arcgis-map.component";
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'map',
-    component: MapComponent
+    component: ArcgisMapComponent
   },
   {
     path: 'my-contracts',
