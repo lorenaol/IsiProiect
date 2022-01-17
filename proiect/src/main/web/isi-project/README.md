@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+DROP TABLE DATABASECHANGELOGLOCK;
+DROP TABLE DATABASECHANGELOG;
+drop table contracte;
+drop table oferte;
+drop table cereri;
+drop table camioane;
+drop table users;
+
+drop SEQUENCE contracte_seq;
+drop SEQUENCE oferte_seq;
+drop sequence cereri_seq;
+drop SEQUENCE camioane_seq;
+drop sequence users_seq;

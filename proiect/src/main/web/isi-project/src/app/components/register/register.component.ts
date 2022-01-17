@@ -3,6 +3,8 @@ import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {RegisterUserModel} from "../../models/register-user.model";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {User} from "../../entities/user";
+import {UserService} from "../../services/user.service";
 
 
 @Component({
@@ -16,6 +18,7 @@ export class RegisterComponent implements OnInit {
   popupMessage: string | undefined;
 
   userModel = new RegisterUserModel();
+
   registerForm = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
@@ -27,7 +30,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder,
               public snackBar: MatSnackBar,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) {
+
+  }
 
   ngOnInit(): void {
   }
@@ -40,6 +46,13 @@ export class RegisterComponent implements OnInit {
     this.userModel.password = this.registerForm.value.password;
     this.userModel.confirmPassword = this.registerForm.value.confirmPassword;
     this.userModel.role = this.selected;
+    const user =new User();
+    user.name = this.registerForm.value.name;
+   user.email = this.registerForm.value.email;
+    user.phone = this.registerForm.value.phoneNumber;
+    user.password = this.registerForm.value.password;
+    user.role = this.selected;
+  this.userService.addUser(user).subscribe();
     console.log(this.userModel);
     if (this.userModel.password !== this.userModel.confirmPassword) {
       this.popupMessage = 'Parolele nu corespund!';
