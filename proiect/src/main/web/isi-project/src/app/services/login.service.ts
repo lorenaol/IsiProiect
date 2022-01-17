@@ -15,6 +15,6 @@ export class LoginService {
   }
 
   verifyDataLogin(loginData: LoginDataModel): any {
-    return this.http.post<UserInfoModel>(this.baseUrl, loginData);
+    return this.http.post<LoginDataModel>(this.baseUrl, loginData);
   }
 }

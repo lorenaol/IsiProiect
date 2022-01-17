@@ -40,20 +40,6 @@ export class RegisterComponent implements OnInit {
 
   onClick() {
     this.popupMessage = undefined;
-    this.userModel.name = this.registerForm.value.name;
-    this.userModel.email = this.registerForm.value.email;
-    this.userModel.phoneNumber = this.registerForm.value.phoneNumber;
-    this.userModel.password = this.registerForm.value.password;
-    this.userModel.confirmPassword = this.registerForm.value.confirmPassword;
-    this.userModel.role = this.selected;
-    const user =new User();
-    user.name = this.registerForm.value.name;
-   user.email = this.registerForm.value.email;
-    user.phone = this.registerForm.value.phoneNumber;
-    user.password = this.registerForm.value.password;
-    user.role = this.selected;
-  this.userService.addUser(user).subscribe();
-    console.log(this.userModel);
     if (this.userModel.password !== this.userModel.confirmPassword) {
       this.popupMessage = 'Parolele nu corespund!';
     }
@@ -83,6 +69,13 @@ export class RegisterComponent implements OnInit {
         verticalPosition: 'bottom'
       });
     } else {
+      const user =new User();
+      user.name = this.registerForm.value.name;
+      user.email = this.registerForm.value.email;
+      user.phone = this.registerForm.value.phoneNumber;
+      user.password = this.registerForm.value.password;
+      user.role = this.selected;
+      this.userService.addUser(user).subscribe();
       this.router.navigate(['/home']);
     }
   }

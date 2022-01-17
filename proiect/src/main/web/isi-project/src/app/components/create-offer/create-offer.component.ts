@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {OfferModel} from "../../models/offer.model";
+import {Camion} from "@app/entities/camion";
+import {CamionService} from "@app/services/camion.service";
+import {User} from "@app/entities/user";
+import {Offer} from "@app/entities/offer";
+import {OfferService} from "@app/services/offer.service";
 
 @Component({
   selector: 'app-create-offer',
@@ -9,13 +15,17 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class CreateOfferComponent implements OnInit {
 
+  camion = new Camion();
+  user_inutil = new User();
+  offer = new Offer();
   createOfferDetailsForm = new FormGroup({
     dataPlecare: new FormControl(''),
     dataSosire: new FormControl(''),
     locPlecare: new FormControl(''),
     locSosire: new FormControl(''),
     pretGol: new FormControl(''),
-    pretPlin: new FormControl('')
+    pretPlin: new FormControl(''),
+    detalii: new FormControl('')
   });
 
   truckDetailsForm = new FormGroup({
@@ -24,10 +34,13 @@ export class CreateOfferComponent implements OnInit {
     lungime: new FormControl(''),
     latime: new FormControl(''),
     inaltime: new FormControl(''),
-    greutate: new FormControl('')
+    greutate: new FormControl(''),
+    gabarit: new FormControl('')
   });
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private camionService: CamionService,
+              private offerService: OfferService) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +50,37 @@ export class CreateOfferComponent implements OnInit {
   }
 
   addOfferClick(): void {
+    this.camion.status = 'publicat';
+    this.camion.locatie = this.createOfferDetailsForm.value.locPlecare;
+    this.camion.volum = this.truckDetailsForm.value.volum;
+    this.camion.gabarit = this.truckDetailsForm.value.gabarit;
+    this.camion.greutate = this.truckDetailsForm.value.greutate;
+    this.camion.detalii = 'Tip: ' + this.truckDetailsForm.value.tip +
+      '; Lungime: ' + this.truckDetailsForm.value.lungime +
+      '; Latime: ' + this.truckDetailsForm.value.latime +
+      '; Inaltime: ' + this.truckDetailsForm.value.inaltime;
+    this.camionService.addCamion(this.camion).subscribe();
 
+    this.user_inutil.id = 50;
+    this.user_inutil.name = 'Popescu Ion';
+    this.user_inutil.email = 'ion@mail.ro';
+    this.user_inutil.password = 'parola';
+    this.user_inutil.role = 'trasnportator';
+    this.user_inutil.phone = '0734506218';
+
+    this.offer.user = this.user_inutil;
+    this.offer.camion = this.camion;
+    this.offer.locPlecare = this.createOfferDetailsForm.value.locPlecare;
+    this.offer.locSosire = this.createOfferDetailsForm.value.locSosire;
+    this.offer.dataPlecare = this.createOfferDetailsForm.value.dataPlecare;
+    this.offer.dataSosire = this.createOfferDetailsForm.value.dataSosire;
+    this.offer.pretCamionGol = this.createOfferDetailsForm.value.pretGol;
+    this.offer.pretCamionPlin = this.createOfferDetailsForm.value.pretPlin;
+    this.offer.detalii = this.createOfferDetailsForm.value.detalii;
+
+    this.offerService.addOffer(this.offer).subscribe();
+
+    console.log(this.camion);
   }
 
 }
