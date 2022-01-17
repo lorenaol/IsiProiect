@@ -9,12 +9,12 @@ import {UserInfoModel} from "../models/user-info.model";
 
 export class LoginService {
 
-  // private baseUrl = 'http://localhost:8082/login';
-  //
-  // constructor(private http: HttpClient) {
-  // }
-  //
-  // verifyDataLogin(loginData: LoginDataModel): any {
-  //   return this.http.post<UserInfoModel>(this.baseUrl, loginData);
-  // }
+  private baseUrl = 'http://localhost:8082/login';
+
+  constructor(private http: HttpClient) {
+  }
+
+  verifyDataLogin(loginData: LoginDataModel): any {
+    return this.http.post<UserInfoModel>(this.baseUrl, loginData);
+  }
 }

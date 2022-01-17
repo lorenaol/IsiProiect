@@ -30,26 +30,21 @@ export class LoginComponent implements OnInit {
   }
 
   onClick(): void {
-      this.formBuilder.group(
-      {
-        email: [this.userEmail],
-        password: [this.userPassword]
+    this.loginData.email = this.userEmail;
+    this.loginData.password = this.userPassword;
+    console.log('data'+ this.loginData);
+    this.loginService.verifyDataLogin(this.loginData).subscribe((result: any) => {
+      if (result !== null) {
+        console.log(result);
+      } else {
+        console.log("nuuuullll");
       }
-    );
-    // this.loginData.email = this.loginForm.value.email;
-    // this.loginData.password = this.loginForm.value.password;
-    // this.loginService.verifyDataLogin(this.loginData).subscribe((result: any) => {
-    //   if (result !== null) {
-    //     console.log(result);
-    //   } else {
-    //     console.log("nuuuullll");
-    //   }
-    // })
-    // console.log(this.loginData);
+    })
   }
 
   clickCreate(): void {
     this.router.navigate(['/register']);
+    console.log()
   }
 
 }
