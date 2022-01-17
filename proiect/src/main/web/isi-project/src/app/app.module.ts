@@ -31,6 +31,7 @@ import {FirebaseService} from "./database/firebase";
 import {FirebaseMockService} from "./database/firebase-mock";
 import { ArcgisMapComponent } from './components/arcgis-map/arcgis-map.component';
 import {NbCardModule, NbListModule} from "@nebular/theme";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -69,9 +70,9 @@ import {NbCardModule, NbListModule} from "@nebular/theme";
     AngularFireDatabaseModule,
     NbCardModule,
     NbListModule,
+    HttpClientModule
   ],
   providers: [FirebaseService, FirebaseMockService],
- // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
