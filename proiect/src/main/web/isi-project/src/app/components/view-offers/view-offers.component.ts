@@ -24,4 +24,7 @@ export class ViewOffersComponent implements OnInit {
   clickMenu(): void {
     this.router.navigate(['/home']);
   }
+  empty(): boolean {
+    return true
+  }
 }

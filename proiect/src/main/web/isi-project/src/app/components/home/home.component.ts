@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   clickCreateOffer(): void {
     this.router.navigate(['/create-offer']);
   }
+  clickCreateRequest(): void {
+  this.router.navigate(['/create-request']);
+}
 
   clickMap(): void {
     this.router.navigate(['/map']);
@@ -31,6 +34,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/view-offers']);
   }
 
+  clickViewRequests(): void {
+    this.router.navigate(['/view-requests']);
+  }
+
   clickMyContracts(): void {
     this.router.navigate(['/my-contracts']);
   }
@@ -41,6 +48,11 @@ export class HomeComponent implements OnInit {
   }
   transportator() : boolean {
     if (this.role == 'Transportator') return true;
+    return false;
+  }
+
+  expeditor() : boolean {
+    if (this.role == 'Expeditor') return true;
     return false;
   }
 }

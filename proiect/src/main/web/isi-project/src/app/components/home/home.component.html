@@ -5,7 +5,7 @@
   </mat-toolbar>
 </p>
 
-<div class="buttons">
+<div *ngIf ="transportator()" class="buttons">
 <!--  <div *ngIf ="transportator()">-->
   <button mat-raised-button class="createButton" (click)="clickCreateOffer()">
     <a class="text">Creeaza</a>
@@ -20,12 +20,43 @@
     <a class="text">Datele mele</a>
   </button>
 <!--  <div *ngIf ="transportator()">-->
-  <button mat-raised-button class="viewButton" (click)="clickViewOffers()">
+  <button mat-raised-button class="viewButton" (click)="clickViewRequests()">
     <a class="text">Vizualizare</a>
     <br>
     <a class="text">cereri</a>
   </button>
 <!--  </div>-->
+  <button mat-raised-button class="filesButton" (click)="clickMyContracts()">
+    <a class="text">Contractele</a>
+    <br>
+    <a class="text">mele</a>
+  </button>
+  <button mat-raised-button class="logoutButton" (click)="logout()">
+    <a class="text">Log out</a>
+  </button>
+</div>
+
+<div *ngIf ="expeditor()" class="buttons">
+  <!--  <div *ngIf ="transportator()">-->
+  <button mat-raised-button class="createButton" (click)="clickCreateRequest()">
+    <a class="text">Creeaza</a>
+    <br>
+    <a class="text">cerere</a>
+  </button>
+  <!--  </div>-->
+  <button mat-raised-button color="" class="mapButton" (click)="clickMap()">
+    <a class="text">Harta</a>
+  </button>
+  <button mat-raised-button class="profileButton" (click)="clickMyProfile()">
+    <a class="text">Datele mele</a>
+  </button>
+  <!--  <div *ngIf ="transportator()">-->
+  <button mat-raised-button class="viewButton" (click)="clickViewOffers()">
+    <a class="text">Vizualizare</a>
+    <br>
+    <a class="text">oferte</a>
+  </button>
+  <!--  </div>-->
   <button mat-raised-button class="filesButton" (click)="clickMyContracts()">
     <a class="text">Contractele</a>
     <br>

@@ -1,1 +1,9 @@
-<button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
+
+<div *ngIf=empty()>
+  <div class="title"> Nu exista cereri!
+    <br><br>
+    <p class="mesaj"> Deoarece nu exista cereri, poti <a href="/create-offer">plasa o oferta</a>.</p>
+    <br>
+    <button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
+  </div>
+</div>

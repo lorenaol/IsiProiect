@@ -10,10 +10,14 @@ export class ViewRequestsComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  cereri?: Request[]
   ngOnInit(): void {
   }
 
   clickMenu(): void {
     this.router.navigate(['/home']);
+  }
+  empty(): boolean {
+    return true
   }
 }

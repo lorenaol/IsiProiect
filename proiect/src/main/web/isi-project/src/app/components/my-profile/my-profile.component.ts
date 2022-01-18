@@ -11,10 +11,19 @@ export class MyProfileComponent implements OnInit {
 
   constructor(private router: Router) { }
   private user?: string;
+  public name?: string
+  id?: string;
+  email?: string;
+  role? : string;
+  phone?: string;
 
   ngOnInit(): void {
     // this.user = JSON.parse(localStorage.getItem('user')!);
-    console.log(localStorage.getItem('user'))
+    this.name = JSON.parse(localStorage.getItem('user')!).name;
+    this.id = JSON.parse(localStorage.getItem('user')!).id;
+    this.email = JSON.parse(localStorage.getItem('user')!).email;
+    this.role = JSON.parse(localStorage.getItem('user')!).role;
+    this.phone = JSON.parse(localStorage.getItem('user')!).phone;
   }
 
   clickMenu(): void {
