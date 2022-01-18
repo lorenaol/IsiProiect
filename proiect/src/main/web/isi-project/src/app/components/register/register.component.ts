@@ -40,25 +40,25 @@ export class RegisterComponent implements OnInit {
 
   onClick() {
     this.popupMessage = undefined;
-    if (this.userModel.password !== this.userModel.confirmPassword) {
+    if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
       this.popupMessage = 'Parolele nu corespund!';
     }
-    if (this.userModel.name === "") {
+    if (this.registerForm.value.name === "") {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
-    if (this.userModel.email === "") {
+    if (this.registerForm.value.email === "") {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
-    if (this.userModel.phoneNumber === "") {
+    if (this.registerForm.value.phoneNumber === "") {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
-    if (this.userModel.password === "") {
+    if (this.registerForm.value.password === "") {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
-    if (this.userModel.confirmPassword === "") {
+    if (this.registerForm.value.confirmPassword === "") {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
-    if (this.userModel.role === undefined) {
+    if (this.registerForm.value.role === undefined) {
       this.popupMessage = 'Toate campurile sunt obligatorii!';
     }
     if (this.popupMessage != null) {
@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
       user.password = this.registerForm.value.password;
       user.role = this.selected;
       this.userService.addUser(user).subscribe();
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     }
   }
 

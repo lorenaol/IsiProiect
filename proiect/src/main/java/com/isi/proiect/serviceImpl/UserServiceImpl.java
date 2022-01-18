@@ -45,4 +45,17 @@ public class UserServiceImpl implements UserService {
         }
         return new User();
     }
+
+    @Override
+    public User login(List<String> params) {
+        String name = params.get(0);
+        String password = params.get(1);
+        if (this.userRepository.existsByEmail(name)) {
+            User user = this.userRepository.findByEmail(name);
+            if (user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return new User();
+    }
 }

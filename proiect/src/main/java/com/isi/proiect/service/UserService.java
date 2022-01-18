@@ -16,4 +16,6 @@ public interface UserService {
     void deleteUser(User user);
 
     User checkUserLogin(LoginDto loginDto);
+
+    User login(List<String> params);
 }

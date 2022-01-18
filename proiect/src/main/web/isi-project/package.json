@@ -10,6 +10,12 @@
   },
   "private": true,
   "dependencies": {
+    "@fortawesome/angular-fontawesome": "~0.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-regular-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@angular/animations": "^12.2.15",
     "@angular/cdk": "^12.2.13",
     "@angular/common": "~12.2.0",

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {User} from "@app/entities/user";
 
 @Component({
   selector: 'app-my-profile',
@@ -9,8 +10,11 @@ import {Router} from "@angular/router";
 export class MyProfileComponent implements OnInit {
 
   constructor(private router: Router) { }
+  private user?: string;
 
   ngOnInit(): void {
+    // this.user = JSON.parse(localStorage.getItem('user')!);
+    console.log(localStorage.getItem('user'))
   }
 
   clickMenu(): void {

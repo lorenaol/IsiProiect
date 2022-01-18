@@ -14,7 +14,7 @@ import {ArcgisMapComponent} from "./components/arcgis-map/arcgis-map.component";
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },
   {

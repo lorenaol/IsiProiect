@@ -6,22 +6,26 @@
 </p>
 
 <div class="buttons">
+<!--  <div *ngIf ="transportator()">-->
   <button mat-raised-button class="createButton" (click)="clickCreateOffer()">
     <a class="text">Creeaza</a>
     <br>
-    <a class="text">cerere/oferta</a>
+    <a class="text">oferta</a>
   </button>
+<!--  </div>-->
   <button mat-raised-button color="" class="mapButton" (click)="clickMap()">
     <a class="text">Harta</a>
   </button>
   <button mat-raised-button class="profileButton" (click)="clickMyProfile()">
     <a class="text">Datele mele</a>
   </button>
+<!--  <div *ngIf ="transportator()">-->
   <button mat-raised-button class="viewButton" (click)="clickViewOffers()">
     <a class="text">Vizualizare</a>
     <br>
-    <a class="text">cereri/oferte</a>
+    <a class="text">cereri</a>
   </button>
+<!--  </div>-->
   <button mat-raised-button class="filesButton" (click)="clickMyContracts()">
     <a class="text">Contractele</a>
     <br>

@@ -20,4 +20,9 @@ export class OfferService {
     return this.http.post<Offer>( environment.apiUrl + 'oferte', offer, {observe: 'response'})
       .pipe(map((res:HttpResponse<Offer>) => res));
   }
+
+  public getOffer(): Observable<HttpResponse<Offer[]>> {
+    return this.http.get<Offer[]>(environment.apiUrl + 'oferte', { observe: 'response' })
+      .pipe(map((res: HttpResponse<Offer[]>) => res));
+  }
 }

@@ -19,6 +19,11 @@ public class UserController {
         return userService.getAll();
     }
 
+    @GetMapping(path = "/login")
+    public User login(@RequestHeader(name = "params") List<String> params) {
+        return userService.login(params);
+    }
+
     @PostMapping
     public User addUser(@RequestBody User user) {
         User u = null;

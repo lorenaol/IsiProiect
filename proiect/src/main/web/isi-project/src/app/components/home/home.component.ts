@@ -10,7 +10,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  role? : string
   ngOnInit(): void {
+    this.role = JSON.parse(localStorage.getItem('user')!).role;
   }
 
   clickCreateOffer(): void {
@@ -34,6 +36,11 @@ export class HomeComponent implements OnInit {
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
+    localStorage.removeItem('user');
+    this.router.navigate(['']);
+  }
+  transportator() : boolean {
+    if (this.role == 'Transportator') return true;
+    return false;
   }
 }
