@@ -25,8 +25,8 @@ public class Oferta {
     @Column(name = "loc_sosire", length = 100)
     private String locSosire;
 
-    @Column(name = "tip_marfa", length = 100)
-    private String tipMarfa;
+//    @Column(name = "tip_marfa", length = 100)
+//    private String tipMarfa;
 
     @Column(name = "data_plecare", length = 100)
     private Date dataPlecare;
@@ -34,11 +34,11 @@ public class Oferta {
     @Column(name = "data_sosire", length = 100)
     private Date dataSosire;
 
-    private Long masa;
-
-    private double buget;
-
-    private Long volum;
+//    private Long masa;
+//
+//    private double buget;
+//
+//    private Long volum;
 
     @Column(name = "pret_camion_gol", length = 100)
     private double pretCamionGol;
@@ -88,13 +88,13 @@ public class Oferta {
         this.locSosire = locSosire;
     }
 
-    public String getTipMarfa() {
-        return tipMarfa;
-    }
-
-    public void setTipMarfa(String tipMarfa) {
-        this.tipMarfa = tipMarfa;
-    }
+//    public String getTipMarfa() {
+//        return tipMarfa;
+//    }
+//
+//    public void setTipMarfa(String tipMarfa) {
+//        this.tipMarfa = tipMarfa;
+//    }
 
     public Date getDataPlecare() {
         return dataPlecare;
@@ -111,30 +111,30 @@ public class Oferta {
     public void setDataSosire(Date dataSosire) {
         this.dataSosire = dataSosire;
     }
-
-    public Long getMasa() {
-        return masa;
-    }
-
-    public void setMasa(Long masa) {
-        this.masa = masa;
-    }
-
-    public double getBuget() {
-        return buget;
-    }
-
-    public void setBuget(double buget) {
-        this.buget = buget;
-    }
-
-    public Long getVolum() {
-        return volum;
-    }
-
-    public void setVolum(Long volum) {
-        this.volum = volum;
-    }
+//
+//    public Long getMasa() {
+//        return masa;
+//    }
+//
+//    public void setMasa(Long masa) {
+//        this.masa = masa;
+//    }
+//
+//    public double getBuget() {
+//        return buget;
+//    }
+//
+//    public void setBuget(double buget) {
+//        this.buget = buget;
+//    }
+//
+//    public Long getVolum() {
+//        return volum;
+//    }
+//
+//    public void setVolum(Long volum) {
+//        this.volum = volum;
+//    }
 
     public double getPretCamionGol() {
         return pretCamionGol;

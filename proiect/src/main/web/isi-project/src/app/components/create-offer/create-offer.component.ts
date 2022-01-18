@@ -59,26 +59,35 @@ export class CreateOfferComponent implements OnInit {
       '; Lungime: ' + this.truckDetailsForm.value.lungime +
       '; Latime: ' + this.truckDetailsForm.value.latime +
       '; Inaltime: ' + this.truckDetailsForm.value.inaltime;
-    this.camionService.addCamion(this.camion).subscribe();
+    let camion2 = new Camion();
+    this.camionService.addCamion(this.camion).subscribe(res => {
+      camion2.id = res.body?.id;
+      camion2.detalii = res.body?.detalii;
+      camion2.gabarit = res.body?.gabarit;
+      camion2.greutate = res.body?.greutate;
+      camion2.locatie = res.body?.locatie;
+      camion2.status = res.body?.status;
+      camion2.volum = res.body?.volum;
+      this.user_inutil.id = 50;
+      this.user_inutil.name = 'Popescu Ion';
+      this.user_inutil.email = 'ion@mail.ro';
+      this.user_inutil.password = 'parola';
+      this.user_inutil.role = 'trasnportator';
+      this.user_inutil.phone = '0734506218';
 
-    this.user_inutil.id = 50;
-    this.user_inutil.name = 'Popescu Ion';
-    this.user_inutil.email = 'ion@mail.ro';
-    this.user_inutil.password = 'parola';
-    this.user_inutil.role = 'trasnportator';
-    this.user_inutil.phone = '0734506218';
+      this.offer.user = this.user_inutil;
+      this.offer.camion = camion2;
+      this.offer.locPlecare = this.createOfferDetailsForm.value.locPlecare;
+      this.offer.locSosire = this.createOfferDetailsForm.value.locSosire;
+      this.offer.dataPlecare = this.createOfferDetailsForm.value.dataPlecare;
+      this.offer.dataSosire = this.createOfferDetailsForm.value.dataSosire;
+      this.offer.pretCamionGol = this.createOfferDetailsForm.value.pretGol;
+      this.offer.pretCamionPlin = this.createOfferDetailsForm.value.pretPlin;
+      this.offer.detalii = this.createOfferDetailsForm.value.detalii;
 
-    this.offer.user = this.user_inutil;
-    this.offer.camion = this.camion;
-    this.offer.locPlecare = this.createOfferDetailsForm.value.locPlecare;
-    this.offer.locSosire = this.createOfferDetailsForm.value.locSosire;
-    this.offer.dataPlecare = this.createOfferDetailsForm.value.dataPlecare;
-    this.offer.dataSosire = this.createOfferDetailsForm.value.dataSosire;
-    this.offer.pretCamionGol = this.createOfferDetailsForm.value.pretGol;
-    this.offer.pretCamionPlin = this.createOfferDetailsForm.value.pretPlin;
-    this.offer.detalii = this.createOfferDetailsForm.value.detalii;
+      this.offerService.addOffer(this.offer).subscribe();
+    });
 
-    this.offerService.addOffer(this.offer).subscribe();
 
     console.log(this.camion);
   }

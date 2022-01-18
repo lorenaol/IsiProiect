@@ -16,6 +16,7 @@ export class OfferService {
   }
 
   public addOffer(offer: Offer): Observable<HttpResponse<Offer>>{
+    console.log(offer);
     return this.http.post<Offer>( environment.apiUrl + 'oferte', offer, {observe: 'response'})
       .pipe(map((res:HttpResponse<Offer>) => res));
   }

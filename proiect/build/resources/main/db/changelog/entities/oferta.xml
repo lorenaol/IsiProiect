@@ -29,9 +29,9 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="tip_marfa" type="varchar(128)">
-                <constraints nullable="false" />
-            </column>
+<!--            <column name="tip_marfa" type="varchar(128)">-->
+<!--                <constraints nullable="false" />-->
+<!--            </column>-->
 
             <column name="loc_sosire" type="varchar(128)">
                 <constraints nullable="false" />
@@ -53,17 +53,17 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="masa" type="bigint">
-                <constraints nullable="false" />
-            </column>
+<!--            <column name="masa" type="bigint">-->
+<!--                <constraints nullable="false" />-->
+<!--            </column>-->
 
-            <column name="buget" type="DECIMAL(6,2)">
-                <constraints nullable="false" />
-            </column>
+<!--            <column name="buget" type="DECIMAL(6,2)">-->
+<!--                <constraints nullable="false" />-->
+<!--            </column>-->
 
-            <column name="volum" type="bigint">
-                <constraints nullable="false" />
-            </column>
+<!--            <column name="volum" type="bigint">-->
+<!--                <constraints nullable="false" />-->
+<!--            </column>-->
 
             <column name="detalii" type="clob">
             </column>
