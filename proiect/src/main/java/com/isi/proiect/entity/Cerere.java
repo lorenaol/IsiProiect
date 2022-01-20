@@ -43,6 +43,16 @@ public class Cerere {
 
     private Long volum;
 
+    private String detalii;
+
+    public String getDetalii() {
+        return detalii;
+    }
+
+    public void setDetalii(String detalii) {
+        this.detalii = detalii;
+    }
+
     public Long getId() {
         return id;
     }

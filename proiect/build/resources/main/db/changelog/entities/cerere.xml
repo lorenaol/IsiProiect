@@ -60,6 +60,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="detalii" type="varchar(128)">
+                <constraints nullable="false" />
+            </column>
+
 
         </createTable>
     </changeSet>

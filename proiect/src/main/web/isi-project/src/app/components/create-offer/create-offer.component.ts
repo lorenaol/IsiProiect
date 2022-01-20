@@ -16,7 +16,7 @@ import {OfferService} from "@app/services/offer.service";
 export class CreateOfferComponent implements OnInit {
 
   camion = new Camion();
-  user_inutil = new User();
+  user = new User();
   offer = new Offer();
   createOfferDetailsForm = new FormGroup({
     dataPlecare: new FormControl(''),
@@ -43,6 +43,12 @@ export class CreateOfferComponent implements OnInit {
               private offerService: OfferService) { }
 
   ngOnInit(): void {
+    this.user.id = JSON.parse(localStorage.getItem('user')!).id;
+    this.user.name = JSON.parse(localStorage.getItem('user')!).name;
+    this.user.email = JSON.parse(localStorage.getItem('user')!).email;
+    this.user.phone = JSON.parse(localStorage.getItem('user')!).phone;
+    this.user.role = JSON.parse(localStorage.getItem('user')!).role;
+    this.user.password = JSON.parse(localStorage.getItem('user')!).password;
   }
 
   clickMenu(): void {
@@ -68,14 +74,8 @@ export class CreateOfferComponent implements OnInit {
       camion2.locatie = res.body?.locatie;
       camion2.status = res.body?.status;
       camion2.volum = res.body?.volum;
-      this.user_inutil.id = 50;
-      this.user_inutil.name = 'Popescu Ion';
-      this.user_inutil.email = 'ion@mail.ro';
-      this.user_inutil.password = 'parola';
-      this.user_inutil.role = 'trasnportator';
-      this.user_inutil.phone = '0734506218';
 
-      this.offer.user = this.user_inutil;
+      this.offer.user = this.user;
       this.offer.camion = camion2;
       this.offer.locPlecare = this.createOfferDetailsForm.value.locPlecare;
       this.offer.locSosire = this.createOfferDetailsForm.value.locSosire;
