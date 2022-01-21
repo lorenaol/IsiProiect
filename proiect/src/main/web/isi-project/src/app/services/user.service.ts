@@ -23,4 +23,9 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl+'users/login', {headers:params, observe: 'response'})
       .pipe(map((res: HttpResponse<User>) => res));
   }
+
+  public editUser(user: User): Observable<HttpResponse<User>>{
+    return this.http.put<User>(environment.apiUrl + 'users', user, {observe: 'response'})
+      .pipe(map((res:HttpResponse<User>) => res));
+  }
 }

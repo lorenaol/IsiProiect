@@ -24,9 +24,14 @@ export class MyProfileComponent implements OnInit {
     this.email = JSON.parse(localStorage.getItem('user')!).email;
     this.role = JSON.parse(localStorage.getItem('user')!).role;
     this.phone = JSON.parse(localStorage.getItem('user')!).phone;
+    console.log('hauda');
   }
 
   clickMenu(): void {
     this.router.navigate(['/home']);
+  }
+
+  onClick(): void {
+    this.router.navigate(['/edit-profile']);
   }
 }

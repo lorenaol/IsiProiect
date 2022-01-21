@@ -11,6 +11,7 @@ import {MapComponent} from "./components/map/map.component";
 import {MyContractsComponent} from "./components/my-contracts/my-contracts.component";
 import {MyProfileComponent} from "./components/my-profile/my-profile.component";
 import {ArcgisMapComponent} from "./components/arcgis-map/arcgis-map.component";
+import {EditProfileComponent} from "@app/components/edit-profile/edit-profile.component";
 
 const routes: Routes = [
   {
@@ -52,6 +53,10 @@ const routes: Routes = [
   {
     path: 'my-profile',
     component: MyProfileComponent
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent
   }
 
 ];

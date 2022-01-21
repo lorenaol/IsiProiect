@@ -33,6 +33,7 @@ import { ArcgisMapComponent } from './components/arcgis-map/arcgis-map.component
 import {NbCardModule, NbListModule} from "@nebular/theme";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     ViewRequestsComponent,
     MapComponent,
     MyContractsComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

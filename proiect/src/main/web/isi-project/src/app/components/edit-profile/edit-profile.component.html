@@ -1,0 +1,55 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+
+<mat-card class="edit-profile-card">
+  <mat-toolbar class="toolbar">
+    <mat-toolbar-row>
+      <h1 class="toolbar-title">Schimba datele:</h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div class="edit">
+    <form [formGroup]="editForm">
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Nume </mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Email </mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Telefon </mat-label>
+          <input matInput formControlName="phoneNumber">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Parola veche</mat-label>
+          <input type="password" matInput formControlName="oldPassword">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Parola noua</mat-label>
+          <input type="password" matInput formControlName="newPassword">
+        </mat-form-field>
+      </div>
+      <div class="elem">
+        <mat-form-field appearance="fill">
+          <mat-label> Confirma parola </mat-label>
+          <input type="password" matInput formControlName="confirmPassword">
+        </mat-form-field>
+      </div>
+
+    </form>
+  </div>
+
+  <button mat-raised-button class="edit-button" (click)="clickEdit()" > Salveaza </button>
+
+</mat-card>
+

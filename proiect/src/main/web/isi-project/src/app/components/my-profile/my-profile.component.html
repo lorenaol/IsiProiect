@@ -1,10 +1,9 @@
 <button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
-<div class="details">
-<div>Name: {{name}}</div>
-<div>Email: {{email}}</div>
-<div>Id: {{id}}</div>
-<div>Rol: {{role}}</div>
-<div>Telefon: {{phone}}</div>
-
-
-</div>
+<a class="profile">Datele mele:</a>
+<mat-card class="card">
+  <div class="elem1">{{name}}</div>
+  <div class="elem2">{{role}}</div>
+  <div class="elem">Email: {{email}}</div>
+  <div class="elem">Telefon: {{phone}}</div>
+  <button mat-raised-button class="edit" (click)="onClick()"> Modifica </button>
+</mat-card>

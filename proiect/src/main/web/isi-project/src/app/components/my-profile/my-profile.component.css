@@ -5,13 +5,77 @@
   width: 100px;
   height: 50px;
 }
-.details {
-  font-size: x-large;
-  font-weight: bolder;
-  color: black;
-  text-align: center;
 
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 350px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background: rgba(12, 30, 76, 0.7);
 }
-.details div{
-  margin-top: 20px;
+
+.elem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-family: Calibri, serif;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.elem1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: xxx-large;
+  font-family: Calibri, serif;
+  font-weight: bold;
+  padding-top: 40px;
+}
+
+.elem2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  font-size: xx-large;
+  font-family: Calibri, serif;
+  font-weight: bold;
+  padding-bottom: 35px;
+}
+
+.profile {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-family: Calibri, serif;
+  font-size: xxx-large;
+  font-weight: bold;
+  color: rgba(12, 30, 76, 0.84);
+}
+
+.edit {
+  font-family: Calibri, serif;
+  font-weight: bold;
+  color: rgba(12, 30, 76, 0.7);
+  height: 50px;
+  width: 20%;
+  font-size: larger;
+  margin: 0;
+  position: absolute;
+  top: 80%;
+  left: 40%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
