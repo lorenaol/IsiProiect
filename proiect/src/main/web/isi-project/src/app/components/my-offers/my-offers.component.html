@@ -1,0 +1,12 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<div fxLayout="row wrap"></div>
+<div>
+  <a class="title"> Ofertele mele </a>
+<!--  <app-view-offer [selectedId]="id"></app-view-offer>-->
+  <div *ngFor="let offer of myOffers">
+    <button mat-raised-button class="id-button" (click)="clickOffer(offer)">
+      {{offer.id}}
+    </button>
+
+  </div>
+</div>

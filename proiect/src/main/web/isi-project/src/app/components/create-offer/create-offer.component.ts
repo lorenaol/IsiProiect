@@ -55,6 +55,10 @@ export class CreateOfferComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  clickMyOffers(): void {
+    this.router.navigate(['/my-offers']);
+  }
+
   addOfferClick(): void {
     this.camion.status = 'publicat';
     this.camion.locatie = this.createOfferDetailsForm.value.locPlecare;
@@ -85,7 +89,9 @@ export class CreateOfferComponent implements OnInit {
       this.offer.pretCamionPlin = this.createOfferDetailsForm.value.pretPlin;
       this.offer.detalii = this.createOfferDetailsForm.value.detalii;
 
-      this.offerService.addOffer(this.offer).subscribe();
+      this.offerService.addOffer(this.offer).subscribe(res => {
+        this.router.navigate(['/home']);
+      });
     });
 
 

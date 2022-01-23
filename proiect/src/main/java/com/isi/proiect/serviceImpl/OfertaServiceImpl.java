@@ -33,4 +33,14 @@ public class OfertaServiceImpl implements OfertaService {
     public void deleteOferta(Oferta oferta) {
         ofertaRepository.delete(oferta);
     }
+
+    @Override
+    public List<Oferta> getAllOffersByUserId(Long id) {
+        return ofertaRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Oferta getOfertaById(Long id) {
+        return ofertaRepository.getOfertaById(id);
+    }
 }

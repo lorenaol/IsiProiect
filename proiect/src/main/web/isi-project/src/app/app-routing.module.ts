@@ -12,6 +12,9 @@ import {MyContractsComponent} from "./components/my-contracts/my-contracts.compo
 import {MyProfileComponent} from "./components/my-profile/my-profile.component";
 import {ArcgisMapComponent} from "./components/arcgis-map/arcgis-map.component";
 import {EditProfileComponent} from "@app/components/edit-profile/edit-profile.component";
+import {MyOffersComponent} from "@app/components/my-offers/my-offers.component";
+import {MyRequestsComponent} from "@app/components/my-requests/my-requests.component";
+import {ViewOfferComponent} from "@app/components/view-offer/view-offer.component";
 
 const routes: Routes = [
   {
@@ -57,6 +60,18 @@ const routes: Routes = [
   {
     path: 'edit-profile',
     component: EditProfileComponent
+  },
+  {
+    path: 'my-offers',
+    component: MyOffersComponent
+  },
+  {
+    path: 'my-requests',
+    component: MyRequestsComponent
+  },
+  {
+    path: 'view-offer/:id',
+    component: ViewOfferComponent
   }
 
 ];

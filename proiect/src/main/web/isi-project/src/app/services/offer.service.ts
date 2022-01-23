@@ -24,4 +24,14 @@ export class OfferService {
     return this.http.get<Offer[]>(environment.apiUrl + 'oferte', { observe: 'response' })
       .pipe(map((res: HttpResponse<Offer[]>) => res));
   }
+
+  public getOffersByUserId(id: number | undefined): Observable<HttpResponse<Offer[]>> {
+    return this.http.get<Offer[]>(`${environment.apiUrl}oferte/by-user-id?id=${id}`, { observe: 'response' })
+      .pipe(map((res: HttpResponse<Offer[]>) => res));
+  }
+
+  public getOfferById(id? : number): Observable<HttpResponse<Offer>> {
+    return this.http.get<Offer>(`${environment.apiUrl}oferte/by-id?id=${id}`, { observe: 'response' })
+      .pipe(map((res: HttpResponse<Offer>) => res));
+  }
 }

@@ -21,6 +21,16 @@ public class OfertaController {
         return ofertaService.getAll();
     }
 
+    @GetMapping(path = "/by-user-id")
+    public List<Oferta> getOffersByUserId(Long id) {
+        return ofertaService.getAllOffersByUserId(id);
+    }
+
+    @GetMapping(path = "/by-id")
+    public Oferta getOfertaById(Long id) {
+        return ofertaService.getOfertaById(id);
+    }
+
     @PostMapping
     public Oferta addOferta(@RequestBody Oferta oferta) {
         Oferta o = null;

@@ -14,4 +14,8 @@ public interface OfertaService {
     Oferta updateOferta(Oferta oferta);
 
     void deleteOferta(Oferta oferta);
+
+    List<Oferta> getAllOffersByUserId(Long id);
+
+    Oferta getOfertaById(Long id);
 }

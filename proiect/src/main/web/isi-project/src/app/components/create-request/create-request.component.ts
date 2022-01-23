@@ -46,6 +46,10 @@ export class CreateRequestComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  clickMyRequests(): void {
+    this.router.navigate(['/my-requests']);
+  }
+
   addRequestClick(): void {
     this.cerere.user = this.user;
     this.cerere.locPlecare = this.createRequestDetailsForm.value.locPlecare;

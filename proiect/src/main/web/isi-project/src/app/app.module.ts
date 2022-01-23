@@ -34,6 +34,9 @@ import {NbCardModule, NbListModule} from "@nebular/theme";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { MyOffersComponent } from './components/my-offers/my-offers.component';
+import { MyRequestsComponent } from './components/my-requests/my-requests.component';
+import { ViewOfferComponent } from './components/view-offer/view-offer.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     MapComponent,
     MyContractsComponent,
     MyProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MyOffersComponent,
+    MyRequestsComponent,
+    ViewOfferComponent
   ],
   imports: [
     BrowserModule,
