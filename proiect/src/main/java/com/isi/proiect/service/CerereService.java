@@ -15,4 +15,8 @@ public interface CerereService {
     Cerere updateCerere(Cerere cerere);
 
     void deleteCerere(Cerere cerere);
+
+    List<Cerere> getAllRequestsByUserId(Long id);
+
+    Cerere getCerereById(Long id);
 }

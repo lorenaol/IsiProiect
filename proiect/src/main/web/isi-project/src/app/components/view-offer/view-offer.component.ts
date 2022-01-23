@@ -25,7 +25,7 @@ export class ViewOfferComponent implements OnInit {
   idCamion: string | undefined = '';
   status: string | undefined = '';
   locatie: string | undefined = '';
-  volum: string | undefined = '';
+  volum: number | undefined;
   gabarit: number | undefined;
   greutate: number | undefined;
   detaliiCamion: string | undefined = '';

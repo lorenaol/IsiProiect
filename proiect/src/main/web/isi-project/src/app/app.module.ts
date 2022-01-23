@@ -37,6 +37,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { ViewOfferComponent } from './components/view-offer/view-offer.component';
+import { ViewRequestComponent } from './components/view-request/view-request.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ViewOfferComponent } from './components/view-offer/view-offer.component
     EditProfileComponent,
     MyOffersComponent,
     MyRequestsComponent,
-    ViewOfferComponent
+    ViewOfferComponent,
+    ViewRequestComponent
   ],
   imports: [
     BrowserModule,

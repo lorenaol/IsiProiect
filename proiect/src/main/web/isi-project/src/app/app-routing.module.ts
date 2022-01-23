@@ -15,6 +15,7 @@ import {EditProfileComponent} from "@app/components/edit-profile/edit-profile.co
 import {MyOffersComponent} from "@app/components/my-offers/my-offers.component";
 import {MyRequestsComponent} from "@app/components/my-requests/my-requests.component";
 import {ViewOfferComponent} from "@app/components/view-offer/view-offer.component";
+import {ViewRequestComponent} from "@app/components/view-request/view-request.component";
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: 'view-offer/:id',
     component: ViewOfferComponent
+  },
+  {
+    path: 'view-request/:id',
+    component: ViewRequestComponent
   }
 
 ];

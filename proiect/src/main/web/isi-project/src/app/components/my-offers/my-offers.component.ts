@@ -27,7 +27,6 @@ export class MyOffersComponent implements OnInit {
   }
 
   clickBack(): void {
-    // console.log(this.user?.id);
     this.router.navigate(['/create-offer']);
   }
 

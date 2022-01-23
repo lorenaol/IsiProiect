@@ -20,4 +20,14 @@ export class RequestService {
     return this.http.post<Request>( environment.apiUrl + 'cereri', request, {observe: 'response'})
       .pipe(map((res:HttpResponse<Request>) => res));
   }
+
+  public getRequestsByUserId(id: number | undefined): Observable<HttpResponse<Request[]>> {
+    return this.http.get<Request[]>(`${environment.apiUrl}cereri/by-user-id?id=${id}`, { observe: 'response' })
+      .pipe(map((res: HttpResponse<Request[]>) => res));
+  }
+
+  public getRequestById(id? : number): Observable<HttpResponse<Request>> {
+    return this.http.get<Request>(`${environment.apiUrl}cereri/by-id?id=${id}`, { observe: 'response' })
+      .pipe(map((res: HttpResponse<Request>) => res));
+  }
 }

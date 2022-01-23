@@ -1,1 +1,11 @@
 <button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<div fxLayout="row wrap"></div>
+<div>
+  <a class="title"> Cererile mele </a>
+  <div *ngFor="let request of myRequests">
+    <button mat-raised-button class="id-button" (click)="clickRequest(request)">
+      {{request.id}}
+    </button>
+
+  </div>
+</div>

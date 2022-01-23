@@ -1,6 +1,7 @@
 package com.isi.proiect.rest;
 
 import com.isi.proiect.entity.Cerere;
+import com.isi.proiect.entity.Oferta;
 import com.isi.proiect.service.CerereService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,16 @@ public class CerereController {
     @GetMapping
     public List<Cerere> getCereri() {
         return cerereService.getAll();
+    }
+
+    @GetMapping(path = "/by-user-id")
+    public List<Cerere> getOffersByUserId(Long id) {
+        return cerereService.getAllRequestsByUserId(id);
+    }
+
+    @GetMapping(path = "/by-id")
+    public Cerere getOfertaById(Long id) {
+        return cerereService.getCerereById(id);
     }
 
     @PostMapping
