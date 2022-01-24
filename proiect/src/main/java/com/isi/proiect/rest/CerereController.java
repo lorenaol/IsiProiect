@@ -1,5 +1,6 @@
 package com.isi.proiect.rest;
 
+import com.isi.proiect.entity.Camion;
 import com.isi.proiect.entity.Cerere;
 import com.isi.proiect.entity.Oferta;
 import com.isi.proiect.service.CerereService;
@@ -42,6 +43,12 @@ public class CerereController {
             c = cerereService.addCerere(cerere);
         }
         return c;
+    }
+
+    @PutMapping(path = "/status")
+    @ResponseBody
+    public Cerere updateCerereStatus (String status, Long id) {
+        return cerereService.setStatus(status, id);
     }
 
     @PutMapping

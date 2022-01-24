@@ -64,66 +64,19 @@
 
   <mat-toolbar class="toolbar">
     <mat-toolbar-row>
-      <h1 class="toolbar-title">Detalii Camion</h1>
+      <h1 class="toolbar-title">Alege un Camion:</h1>
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <div class="offer-dialog">
-    <form [formGroup]="truckDetailsForm">
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Tip camion (marca) </mat-label>
-          <input matInput formControlName="tip">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Volum (m<sup>3</sup>) </mat-label>
-          <input matInput formControlName="volum">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Lungime (m) </mat-label>
-          <input matInput formControlName="lungime">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Latime (m) </mat-label>
-          <input matInput formControlName="latime">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Inaltime (m) </mat-label>
-          <input matInput formControlName="inaltime">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Greutate (tone) </mat-label>
-          <input matInput formControlName="greutate">
-        </mat-form-field>
-      </div>
-
-      <div class="elem">
-        <mat-form-field appearance="fill">
-          <mat-label> Gabarit (m) </mat-label>
-          <input matInput formControlName="gabarit">
-        </mat-form-field>
-      </div>
-
-    </form>
+  <div *ngFor="let truck of myTrucks">
+    <button mat-raised-button class="id-button" (click)="clickTruck(truck)">
+      <!--            [ngStyle]="{'color': truck.status === 'in asteptare'? 'green' : 'red'}"-->
+      <!--            (click)="clickTruck(truck)">-->
+      {{truck.id}}
+    </button>
   </div>
 
-  <button mat-raised-button class="add-offer-button" (click)="addOfferClick()" > Adauga </button>
+<!--  <button mat-raised-button class="add-offer-button" (click)="addOfferClick()" > Adauga </button>-->
 
   <br>
   <br>

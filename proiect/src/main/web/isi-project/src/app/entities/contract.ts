@@ -6,7 +6,7 @@ export class Contract {
   id?: number;
   cerere? :Request
   oferta? : Offer
-  camion?: Camion;
+  camion?: Camion | null | undefined;
   cost? : number;
   termenPlata? : Date;
   locPlecare?: string;

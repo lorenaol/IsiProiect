@@ -23,6 +23,9 @@ import {ViewRequestAsTransportatorComponent} from "@app/components/view-request-
 import {ViewOffersAsExpeditorComponent} from "@app/components/view-offers-as-expeditor/view-offers-as-expeditor.component";
 import {OfferDetailsComponent} from "@app/components/offer-details/offer-details.component";
 import {ContractDetailsComponent} from "@app/components/contract-details/contract-details.component";
+import {MyTrucksComponent} from "@app/components/my-trucks/my-trucks.component";
+import {AddTruckComponent} from "@app/components/add-truck/add-truck.component";
+import {ViewTruckComponent} from "@app/components/view-truck/view-truck.component";
 
 const routes: Routes = [
   {
@@ -106,6 +109,18 @@ const routes: Routes = [
   {
     path: 'contract/:id',
     component: ContractDetailsComponent
+  },
+  {
+    path: 'my-trucks',
+    component: MyTrucksComponent
+  },
+  {
+    path: 'add-truck',
+    component: AddTruckComponent
+  },
+  {
+    path: 'view-truck/:id',
+    component: ViewTruckComponent
   }
 
 ];

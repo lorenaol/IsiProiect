@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {environment} from "@environments/environment";
 import {map} from "rxjs/operators";
 import {Request} from "@app/entities/request";
+import {Camion} from "@app/entities/camion";
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,9 @@ export class RequestService {
   public getAllRequests(): Observable<HttpResponse<Request[]>> {
     return this.http.get<Request[]>(`${environment.apiUrl}cereri`, { observe: 'response' })
       .pipe(map((res: HttpResponse<Request[]>) => res));
+  }
+
+  public setStatus(status: string, id: number | undefined): any{
+    return this.http.put<Request>( `${environment.apiUrl}cereri/status?status=${status}&id=${id}`, {observe: 'response'})
   }
 }

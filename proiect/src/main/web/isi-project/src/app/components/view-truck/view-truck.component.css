@@ -6,44 +6,21 @@
   height: 50px;
 }
 
-.card1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 500px;
-  height: 350px;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background: rgba(12, 30, 76, 0.7);
-}
-
 .card2 {
   position: absolute;
   top: 50%;
-  left: 70%;
+  left: 50%;
   width: 500px;
   height: 350px;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background: rgba(12, 30, 76, 0.7);
-}
-
-.profile1 {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  font-family: Calibri, serif;
-  font-size: xxx-large;
-  font-weight: bold;
-  color: rgba(12, 30, 76, 0.84);
 }
 
 .profile2 {
   position: absolute;
   top: 20%;
-  left: 70%;
+  left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   font-family: Calibri, serif;
@@ -66,19 +43,4 @@
   color: white;
   font-size: 22px;
   font-family: Calibri, serif;
-}
-
-.similar {
-  font-family: Calibri, serif;
-  font-weight: bold;
-  font-size: 30px;
-  color: rgba(12, 30, 76, 0.84);
-  height: 50px;
-  width: 20%;
-  margin: 0;
-  position: absolute;
-  top: 80%;
-  left: 40%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }

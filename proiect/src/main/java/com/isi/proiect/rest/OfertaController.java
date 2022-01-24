@@ -1,5 +1,6 @@
 package com.isi.proiect.rest;
 
+import com.isi.proiect.entity.Camion;
 import com.isi.proiect.entity.Oferta;
 import com.isi.proiect.entity.User;
 import com.isi.proiect.service.OfertaService;
@@ -43,6 +44,12 @@ public class OfertaController {
             o = ofertaService.addOferta(oferta);
         }
         return o;
+    }
+
+    @PutMapping(path = "/status")
+    @ResponseBody
+    public Oferta updateOfertaStatus (String status, Long id) {
+        return ofertaService.setStatus(status, id);
     }
 
     @PutMapping

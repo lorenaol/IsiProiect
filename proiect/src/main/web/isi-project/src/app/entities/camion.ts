@@ -1,5 +1,8 @@
+import {User} from "@app/entities/user";
+
 export class Camion {
-  id?: string;
+  id?: number;
+  user?: User;
   status?: string;
   locatie?: string;
   volum?: number;

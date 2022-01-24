@@ -20,7 +20,7 @@ export class ViewOffersAsExpeditorComponent implements OnInit {
   pretCamionPlin: number | undefined;
   detalii: string | undefined = '';
 
-  idCamion: string | undefined = '';
+  idCamion: number | undefined;
   status: string | undefined = '';
   locatie: string | undefined = '';
   volum: number | undefined;

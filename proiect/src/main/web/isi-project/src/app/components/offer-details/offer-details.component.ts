@@ -6,6 +6,7 @@ import {Request} from "@app/entities/request";
 import {Offer} from "@app/entities/offer";
 import {ContractService} from "@app/services/contract.service";
 import {Contract} from "@app/entities/contract";
+import {CamionService} from "@app/services/camion.service";
 
 @Component({
   selector: 'app-offer-details',
@@ -14,7 +15,11 @@ import {Contract} from "@app/entities/contract";
 })
 export class OfferDetailsComponent implements OnInit {
 
-  constructor(private router: Router, private offerSevice: OfferService, private contractSevice: ContractService) { }
+  constructor(private router: Router,
+              private offerSevice: OfferService,
+              private requestService: RequestService,
+              private contractSevice: ContractService,
+              private camionService: CamionService) { }
   request? : Request;
   offer? :Offer;
 
@@ -40,17 +45,24 @@ export class OfferDetailsComponent implements OnInit {
     this.router.navigate(['/my-requests']);
   }
   clickSimilar(): void {
-    let contract =new Contract();
-    contract.cerere = this.request;
-    contract.oferta = this.offer;
-    contract.camion = this.offer?.camion;
-    contract.cost = 10;
-    contract.termenPlata = new Date(this.offer?.dataPlecare!);
-    contract.locDescarcare =this.offer?.locSosire;
-    contract.locPlecare = this.offer?.locPlecare;
-    contract.detaliiMarfa = this.offer?.detalii;
-    contract.instructiuniSpeciale = this.request?.detalii;
-    this.contractSevice.addContract(contract).subscribe();
+    this.camionService.setStatus("preluat", this.offer?.camion?.id).subscribe(() => {
+      this.offerSevice.setStatus("acceptata", this.offer?.id).subscribe(() => {
+        this.requestService.setStatus("acceptata", this.request?.id).subscribe(() => {
+          let contract =new Contract();
+          contract.cerere = this.request;
+          contract.oferta = this.offer;
+          contract.camion = this.offer?.camion;
+          contract.cost = 10;
+          contract.termenPlata = new Date(this.offer?.dataPlecare!);
+          contract.locDescarcare =this.offer?.locSosire;
+          contract.locPlecare = this.offer?.locPlecare;
+          contract.detaliiMarfa = this.offer?.detalii;
+          contract.instructiuniSpeciale = this.request?.detalii;
+
+          this.contractSevice.addContract(contract).subscribe();
+        });
+      });
+    });
   }
 
 }

@@ -4,7 +4,7 @@ import {Camion} from "@app/entities/camion";
 export class Offer {
   id?: string;
   user?: User;
-  camion?: Camion;
+  camion?: Camion | null | undefined;
   locPlecare?: string;
   locSosire?: string;
   dataPlecare?: Date;

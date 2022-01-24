@@ -14,6 +14,15 @@
 }
 
 .createButton {
+  margin-left: 3%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #0a0abd;
+  font-weight: bold;
+}
+
+.createButton2 {
   margin-left: 15%;
   margin-top: 10%;
   width: 16%;
@@ -23,7 +32,7 @@
 }
 
 .mapButton {
-  margin-left: 11%;
+  margin-left: 10%;
   margin-top: 10%;
   width: 16%;
   height: 20%;
@@ -32,6 +41,15 @@
 }
 
 .profileButton {
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: purple;
+  font-weight: bold;
+}
+
+.profileButton2 {
   margin-left: 11%;
   margin-top: 10%;
   width: 16%;
@@ -40,8 +58,26 @@
   font-weight: bold;
 }
 
+.myTrucks{
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: black;
+  font-weight: bold;
+}
+
 .viewButton {
   margin-left: 15%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #a5432a;
+  font-weight: bold;
+}
+
+.viewButton2 {
+  margin-left: 11%;
   margin-top: 6%;
   width: 16%;
   height: 20%;
@@ -58,9 +94,27 @@
   font-weight: bold;
 }
 
+.filesButton2 {
+  margin-left: 23%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: orange;
+  font-weight: bold;
+}
+
 
 .logoutButton {
   margin-left: 11%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #ee0606;
+  font-weight: bold;
+}
+
+.logoutButton2 {
+  margin-left: 22%;
   margin-top: 6%;
   width: 16%;
   height: 20%;

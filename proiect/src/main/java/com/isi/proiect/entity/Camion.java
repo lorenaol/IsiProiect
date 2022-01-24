@@ -11,6 +11,10 @@ public class Camion {
     @SequenceGenerator(name = "camioane_seq", allocationSize = 1)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
     private String status;
 
     private String locatie;
@@ -29,6 +33,14 @@ public class Camion {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getStatus() {

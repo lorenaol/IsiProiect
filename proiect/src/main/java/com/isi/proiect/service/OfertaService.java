@@ -1,5 +1,6 @@
 package com.isi.proiect.service;
 
+import com.isi.proiect.entity.Camion;
 import com.isi.proiect.entity.Oferta;
 import com.isi.proiect.entity.User;
 
@@ -20,4 +21,6 @@ public interface OfertaService {
     Oferta getOfertaById(Long id);
 
     List<Oferta> getAllOffersByStatus();
+
+    Oferta setStatus(String status, Long id);
 }

@@ -34,4 +34,22 @@ public class CamionServiceImpl implements CamionService {
     public void deleteCamion(Camion camion) {
         camionRepository.delete(camion);
     }
+
+    @Override
+    public List<Camion> getAllByUserId(Long id) {
+        return camionRepository.findAllByUserId(id);
+    }
+
+    @Override
+    public Camion getCamionById(Long id) {
+        return camionRepository.getCamionById(id);
+    }
+
+    @Override
+    public Camion setStatus(String status, Long id) {
+        Camion camion = camionRepository.getCamionById(id);
+        camion.setStatus(status);
+        camionRepository.save(camion);
+        return camion;
+    }
 }

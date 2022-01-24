@@ -48,4 +48,12 @@ public class OfertaServiceImpl implements OfertaService {
     public List<Oferta> getAllOffersByStatus() {
         return ofertaRepository.findAllByStatus();
     }
+
+    @Override
+    public Oferta setStatus(String status, Long id) {
+        Oferta oferta = ofertaRepository.getOfertaById(id);
+        oferta.setStatus(status);
+        ofertaRepository.save(oferta);
+        return oferta;
+    }
 }

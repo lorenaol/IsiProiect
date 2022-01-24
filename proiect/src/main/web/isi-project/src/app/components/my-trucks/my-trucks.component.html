@@ -1,0 +1,13 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<button mat-raised-button class="addTruck" (click)="clickAddTruck()"> Adauga camion </button>
+<div>
+  <a class="title"> Camioanele mele </a>
+  <div *ngFor="let truck of myTrucks">
+    <button mat-raised-button class="id-button" (click)="clickTruck(truck)">
+<!--            [ngStyle]="{'color': truck.status === 'in asteptare'? 'green' : 'red'}"-->
+<!--            (click)="clickTruck(truck)">-->
+      {{truck.id}}
+    </button>
+
+  </div>
+</div>

@@ -23,7 +23,7 @@ export class ViewOfferComponent implements OnInit {
   statusOferta: string | undefined = '';
   detalii: string | undefined = '';
 
-  idCamion: string | undefined = '';
+  idCamion: number | undefined;
   status: string | undefined = '';
   locatie: string | undefined = '';
   volum: number | undefined;

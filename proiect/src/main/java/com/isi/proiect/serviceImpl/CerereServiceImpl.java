@@ -50,5 +50,13 @@ public class CerereServiceImpl implements CerereService {
         return cerereRepository.findAllByStatus();
     }
 
+    @Override
+    public Cerere setStatus(String status, Long id) {
+        Cerere cerere = cerereRepository.getCerereById(id);
+        cerere.setStatus(status);
+        cerereRepository.save(cerere);
+        return cerere;
+    }
+
 
 }

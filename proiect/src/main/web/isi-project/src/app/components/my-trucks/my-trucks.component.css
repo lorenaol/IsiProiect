@@ -1,0 +1,34 @@
+.back {
+  font-size: x-large;
+  font-weight: bolder;
+  color: #336805;
+  width: 100px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.addTruck {
+  font-size: x-large;
+  font-weight: bolder;
+  color: #051a68;
+  width: 205px;
+  height: 50px;
+  margin-left: 83%;
+}
+.title {
+  color: rgba(12, 30, 76, 0.91);
+  font-weight: bold;
+  font-family: Calibri, serif;
+  font-size: 50px;
+  margin-left: 38%;
+  padding-top: 100px;
+}
+
+.id-button {
+  width: 200px;
+  height: 50px;
+  /*color: rgba(12, 30, 76, 0.73);*/
+  font-size: 30px;
+  margin-bottom: 20px;
+  margin-left: 42%;
+}

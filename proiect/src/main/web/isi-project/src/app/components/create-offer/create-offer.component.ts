@@ -18,6 +18,9 @@ export class CreateOfferComponent implements OnInit {
   camion = new Camion();
   user = new User();
   offer = new Offer();
+  myTrucks: Camion[] | null | undefined;
+  id: number|undefined;
+
   createOfferDetailsForm = new FormGroup({
     dataPlecare: new FormControl(''),
     dataSosire: new FormControl(''),
@@ -26,16 +29,6 @@ export class CreateOfferComponent implements OnInit {
     pretGol: new FormControl(''),
     pretPlin: new FormControl(''),
     detalii: new FormControl('')
-  });
-
-  truckDetailsForm = new FormGroup({
-    tip: new FormControl(''),
-    volum: new FormControl(''),
-    lungime: new FormControl(''),
-    latime: new FormControl(''),
-    inaltime: new FormControl(''),
-    greutate: new FormControl(''),
-    gabarit: new FormControl('')
   });
 
   constructor(private router: Router,
@@ -49,6 +42,10 @@ export class CreateOfferComponent implements OnInit {
     this.user.phone = JSON.parse(localStorage.getItem('user')!).phone;
     this.user.role = JSON.parse(localStorage.getItem('user')!).role;
     this.user.password = JSON.parse(localStorage.getItem('user')!).password;
+    this.camionService.getTrucksByUserId(this.user?.id).subscribe(res => {
+      this.myTrucks = res.body;
+      console.log(this.myTrucks);
+    })
   }
 
   clickMenu(): void {
@@ -59,28 +56,11 @@ export class CreateOfferComponent implements OnInit {
     this.router.navigate(['/my-offers']);
   }
 
-  addOfferClick(): void {
-    this.camion.status = 'publicat';
-    this.camion.locatie = this.createOfferDetailsForm.value.locPlecare;
-    this.camion.volum = this.truckDetailsForm.value.volum;
-    this.camion.gabarit = this.truckDetailsForm.value.gabarit;
-    this.camion.greutate = this.truckDetailsForm.value.greutate;
-    this.camion.detalii = 'Tip: ' + this.truckDetailsForm.value.tip +
-      '; Lungime: ' + this.truckDetailsForm.value.lungime +
-      '; Latime: ' + this.truckDetailsForm.value.latime +
-      '; Inaltime: ' + this.truckDetailsForm.value.inaltime;
-    let camion2 = new Camion();
-    this.camionService.addCamion(this.camion).subscribe(res => {
-      camion2.id = res.body?.id;
-      camion2.detalii = res.body?.detalii;
-      camion2.gabarit = res.body?.gabarit;
-      camion2.greutate = res.body?.greutate;
-      camion2.locatie = res.body?.locatie;
-      camion2.status = res.body?.status;
-      camion2.volum = res.body?.volum;
-
+  clickTruck(truck: Camion): void {
+    // this.router.navigate(['/view-truck', truck.id]);
+    this.camionService.getTrucksById(truck.id).subscribe(res => {
       this.offer.user = this.user;
-      this.offer.camion = camion2;
+      this.offer.camion = res?.body;
       this.offer.locPlecare = this.createOfferDetailsForm.value.locPlecare;
       this.offer.locSosire = this.createOfferDetailsForm.value.locSosire;
       this.offer.dataPlecare = this.createOfferDetailsForm.value.dataPlecare;
@@ -93,10 +73,9 @@ export class CreateOfferComponent implements OnInit {
       this.offerService.addOffer(this.offer).subscribe(res => {
         this.router.navigate(['/home']);
       });
+
+      console.log(this.camion);
     });
-
-
-    console.log(this.camion);
   }
 
 }

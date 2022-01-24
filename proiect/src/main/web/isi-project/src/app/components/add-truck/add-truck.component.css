@@ -1,23 +1,15 @@
-.menu {
+.back {
   font-size: x-large;
   font-weight: bolder;
   color: #336805;
   width: 100px;
   height: 50px;
+  margin-bottom: 50px;
 }
 
-.myOffers {
-  font-size: x-large;
-  font-weight: bolder;
-  color: #336805;
-  width: 200px;
-  height: 50px;
-  margin-left: 80%;
-}
-
-.create-offer-card {
+.create-truck-card {
   width: 1000px;
-  height: 1900px;
+  height: 1150px;
   margin: auto;
   margin-top: 25px;
 }
@@ -47,7 +39,7 @@
   padding-top: 40px;
 }
 
-.add-offer-button {
+.add-truck-button {
   background: rgba(12, 30, 76, 0.12);
   color: rgb(12, 30, 76);
   height: 50px;
@@ -55,14 +47,4 @@
   font-size: larger;
   margin-top: auto;
   margin-left: 45%;
-}
-
-.id-button {
-  width: 200px;
-  height: 50px;
-  /*color: rgba(12, 30, 76, 0.73);*/
-  font-size: 30px;
-  margin-bottom: 20px;
-  margin-left: 42%;
-  margin-top: 20px;
 }

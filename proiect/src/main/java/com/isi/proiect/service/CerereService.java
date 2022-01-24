@@ -1,5 +1,6 @@
 package com.isi.proiect.service;
 
+import com.isi.proiect.entity.Camion;
 import com.isi.proiect.entity.Cerere;
 import com.isi.proiect.entity.Oferta;
 import liquibase.pro.packaged.C;
@@ -21,4 +22,6 @@ public interface CerereService {
     Cerere getCerereById(Long id);
 
     List<Cerere> getAllRequestsByStatus();
+
+    Cerere setStatus(String status, Long id);
 }

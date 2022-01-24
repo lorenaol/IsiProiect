@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "@environments/environment";
 import {map} from "rxjs/operators";
 import {Offer} from "@app/entities/offer";
+import {Camion} from "@app/entities/camion";
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,9 @@ export class OfferService {
   public getOfferById(id? : number): Observable<HttpResponse<Offer>> {
     return this.http.get<Offer>(`${environment.apiUrl}oferte/by-id?id=${id}`, { observe: 'response' })
       .pipe(map((res: HttpResponse<Offer>) => res));
+  }
+
+  public setStatus(status: string, id: string | undefined): any{
+    return this.http.put<Offer>( `${environment.apiUrl}oferte/status?status=${status}&id=${id}`, {observe: 'response'})
   }
 }

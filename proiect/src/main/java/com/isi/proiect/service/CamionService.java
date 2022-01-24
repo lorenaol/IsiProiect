@@ -14,4 +14,10 @@ public interface CamionService {
     Camion updateCamion(Camion camion);
 
     void deleteCamion(Camion camion);
+
+    List<Camion> getAllByUserId(Long id);
+
+    Camion getCamionById(Long id);
+
+    Camion setStatus(String status, Long id);
 }

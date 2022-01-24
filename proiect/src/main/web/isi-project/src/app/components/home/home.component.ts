@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/my-profile']);
   }
 
+  clickMyTrucks(): void {
+    this.router.navigate(['/my-trucks']);
+  }
+
   clickViewOffers(): void {
     this.router.navigate(['/view-offers']);
   }
