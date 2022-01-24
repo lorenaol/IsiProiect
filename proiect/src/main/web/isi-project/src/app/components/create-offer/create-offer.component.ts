@@ -88,6 +88,7 @@ export class CreateOfferComponent implements OnInit {
       this.offer.pretCamionGol = this.createOfferDetailsForm.value.pretGol;
       this.offer.pretCamionPlin = this.createOfferDetailsForm.value.pretPlin;
       this.offer.detalii = this.createOfferDetailsForm.value.detalii;
+      this.offer.status = 'in asteptare';
 
       this.offerService.addOffer(this.offer).subscribe(res => {
         this.router.navigate(['/home']);

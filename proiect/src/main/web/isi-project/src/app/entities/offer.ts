@@ -7,9 +7,10 @@ export class Offer {
   camion?: Camion;
   locPlecare?: string;
   locSosire?: string;
-  dataPlecare?: string;
-  dataSosire?: string;
+  dataPlecare?: Date;
+  dataSosire?: Date;
   pretCamionGol?: number;
   pretCamionPlin?: number;
+  status?: string;
   detalii?: string;
 }

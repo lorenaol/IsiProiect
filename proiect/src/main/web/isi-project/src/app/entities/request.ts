@@ -6,12 +6,13 @@ export class Request {
   locPlecare?: string;
   locSosire?: string;
   tipMarfa?: string;
-  dataPlecare?: string;
-  dataMaximaPlecare?: string;
-  dataSosire?: string;
-  dataMaximaSosire?: string;
+  dataPlecare?: Date;
+  dataMaximaPlecare?: Date;
+  dataSosire?: Date;
+  dataMaximaSosire?: Date;
   masa?: number;
   buget?: number;
   volum?: number;
+  status?: string;
   detalii?: string;
 }

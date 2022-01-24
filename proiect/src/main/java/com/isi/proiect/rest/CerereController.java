@@ -20,6 +20,11 @@ public class CerereController {
         return cerereService.getAll();
     }
 
+    @GetMapping(path = "/status")
+    public List<Cerere> getOffersByStatus() {
+        return cerereService.getAllRequestsByStatus();
+    }
+
     @GetMapping(path = "/by-user-id")
     public List<Cerere> getOffersByUserId(Long id) {
         return cerereService.getAllRequestsByUserId(id);

@@ -2,10 +2,9 @@
 <div fxLayout="row wrap"></div>
 <div>
   <a class="title"> Sugestii de oferte </a>
-  <!--  <app-view-offer [selectedId]="id"></app-view-offer>-->
-  <div *ngFor="let offer of offerts">
-    <button mat-raised-button class="id-button" (click)="clickRequest(offer)">
-      {{offer.id}}
+  <div *ngFor="let suggestion of suggestions">
+    <button mat-raised-button class="id-button" (click)="clickRequest(suggestion)">
+      {{suggestion.id}}
     </button>
 
   </div>

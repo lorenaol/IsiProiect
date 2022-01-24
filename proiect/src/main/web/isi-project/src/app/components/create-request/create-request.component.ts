@@ -63,8 +63,11 @@ export class CreateRequestComponent implements OnInit {
     this.cerere.buget = this.createRequestDetailsForm.value.buget;
     this.cerere.volum = this.createRequestDetailsForm.value.volum;
     this.cerere.detalii = this.createRequestDetailsForm.value.detalii;
+    this.cerere.status = 'in asteptare';
     console.log(this.cerere);
 
-    this.requestService.addRequest(this.cerere).subscribe();
+    this.requestService.addRequest(this.cerere).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 }

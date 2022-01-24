@@ -43,4 +43,9 @@ public class OfertaServiceImpl implements OfertaService {
     public Oferta getOfertaById(Long id) {
         return ofertaRepository.getOfertaById(id);
     }
+
+    @Override
+    public List<Oferta> getAllOffersByStatus() {
+        return ofertaRepository.findAllByStatus();
+    }
 }

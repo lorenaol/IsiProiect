@@ -3,7 +3,9 @@
 <div>
   <a class="title"> Ofertele mele </a>
   <div *ngFor="let offer of myOffers">
-    <button mat-raised-button class="id-button" (click)="clickOffer(offer)">
+    <button mat-raised-button class="id-button"
+            [ngStyle]="{'color': offer.status === 'in asteptare'? 'green' : 'red'}"
+            (click)="clickOffer(offer)">
       {{offer.id}}
     </button>
 

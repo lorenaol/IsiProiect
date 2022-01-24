@@ -43,7 +43,17 @@ public class Cerere {
 
     private Long volum;
 
+    private String status;
+
     private String detalii;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getDetalii() {
         return detalii;

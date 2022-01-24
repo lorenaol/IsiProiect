@@ -20,6 +20,7 @@ export class ViewOfferComponent implements OnInit {
   dataSosire: string | undefined = '';
   pretCamionGol: number | undefined;
   pretCamionPlin: number | undefined;
+  statusOferta: string | undefined = '';
   detalii: string | undefined = '';
 
   idCamion: string | undefined = '';
@@ -40,10 +41,15 @@ export class ViewOfferComponent implements OnInit {
       this.offer = res.body;
       this.locPlecare = res.body?.locPlecare;
       this.locSosire = res.body?.locSosire;
-      this.dataPlecare = res.body?.dataPlecare;
-      this.dataSosire = res.body?.dataSosire;
+      this.dataPlecare = new Date(res.body!.dataPlecare!).getDate().toString() + '-' +
+        new Date(res.body!.dataPlecare!).getMonth() + '-' +
+        new Date(res.body!.dataPlecare!).getFullYear();
+      this.dataSosire = new Date(res.body!.dataSosire!).getDate().toString() + '-' +
+        new Date(res.body!.dataSosire!).getMonth() + '-' +
+        new Date(res.body!.dataSosire!).getFullYear();
       this.pretCamionGol = res.body?.pretCamionGol;
       this.pretCamionPlin = res.body?.pretCamionPlin;
+      this.statusOferta = res.body?.status;
       this.detalii = res.body?.detalii;
 
       this.idCamion = res.body?.camion?.id;

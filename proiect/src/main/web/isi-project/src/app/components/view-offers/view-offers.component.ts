@@ -19,7 +19,7 @@ export class ViewOffersComponent implements OnInit {
   oferte?: Offer[]
 
   ngOnInit(): void {
-    this.offerService.getOffer().subscribe(res =>{
+    this.offerService.getOfferByStatus().subscribe(res =>{
       this.offers = res.body;
       console.log(this.offers);
     })

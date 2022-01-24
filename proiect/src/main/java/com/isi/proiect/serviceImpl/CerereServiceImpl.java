@@ -45,5 +45,10 @@ public class CerereServiceImpl implements CerereService {
         return cerereRepository.getCerereById(id);
     }
 
+    @Override
+    public List<Cerere> getAllRequestsByStatus() {
+        return cerereRepository.findAllByStatus();
+    }
+
 
 }

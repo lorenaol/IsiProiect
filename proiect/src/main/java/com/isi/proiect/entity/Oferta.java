@@ -46,7 +46,17 @@ public class Oferta {
     @Column(name = "pret_camion_plin", length = 100)
     private double pretCamionPlin;
 
+    private String status;
+
     private String detalii;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;

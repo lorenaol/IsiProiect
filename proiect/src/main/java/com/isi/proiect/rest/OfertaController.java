@@ -21,6 +21,11 @@ public class OfertaController {
         return ofertaService.getAll();
     }
 
+    @GetMapping(path = "/status")
+    public List<Oferta> getOferteByStatus() {
+        return ofertaService.getAllOffersByStatus();
+    }
+
     @GetMapping(path = "/by-user-id")
     public List<Oferta> getOffersByUserId(Long id) {
         return ofertaService.getAllOffersByUserId(id);

@@ -42,8 +42,12 @@ export class ViewOffersAsExpeditorComponent implements OnInit {
     this.offerService.getOfferById(this.id).subscribe(res => {
       this.locPlecare = res.body?.locPlecare;
       this.locSosire = res.body?.locSosire;
-      this.dataPlecare = res.body?.dataPlecare;
-      this.dataSosire = res.body?.dataSosire;
+      this.dataPlecare = new Date(res.body!.dataPlecare!).getDate().toString() + '-' +
+        new Date(res.body!.dataPlecare!).getMonth() + '-' +
+        new Date(res.body!.dataPlecare!).getFullYear();
+      this.dataSosire = new Date(res.body!.dataSosire!).getDate().toString() + '-' +
+        new Date(res.body!.dataSosire!).getMonth() + '-' +
+        new Date(res.body!.dataSosire!).getFullYear();
       this.pretCamionGol = res.body?.pretCamionGol;
       this.pretCamionPlin = res.body?.pretCamionPlin;
       this.detalii = res.body?.detalii;

@@ -25,6 +25,11 @@ export class OfferService {
       .pipe(map((res: HttpResponse<Offer[]>) => res));
   }
 
+  public getOfferByStatus(): Observable<HttpResponse<Offer[]>> {
+    return this.http.get<Offer[]>(environment.apiUrl + 'oferte/status', {observe: 'response'})
+      .pipe(map((res: HttpResponse<Offer[]>) => res));
+  }
+
   public getOffersByUserId(id: number | undefined): Observable<HttpResponse<Offer[]>> {
     return this.http.get<Offer[]>(`${environment.apiUrl}oferte/by-user-id?id=${id}`, { observe: 'response' })
       .pipe(map((res: HttpResponse<Offer[]>) => res));

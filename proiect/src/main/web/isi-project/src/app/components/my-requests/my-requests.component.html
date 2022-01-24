@@ -3,7 +3,9 @@
 <div>
   <a class="title"> Cererile mele </a>
   <div *ngFor="let request of myRequests">
-    <button mat-raised-button class="id-button" (click)="clickRequest(request)">
+    <button mat-raised-button class="id-button"
+            [ngStyle]="{'color': request.status === 'in asteptare'? 'green' : 'red'}"
+            (click)="clickRequest(request)">
       {{request.id}}
     </button>
 

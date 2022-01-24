@@ -19,4 +19,6 @@ public interface CerereService {
     List<Cerere> getAllRequestsByUserId(Long id);
 
     Cerere getCerereById(Long id);
+
+    List<Cerere> getAllRequestsByStatus();
 }

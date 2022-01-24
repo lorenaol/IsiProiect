@@ -18,4 +18,6 @@ public interface OfertaService {
     List<Oferta> getAllOffersByUserId(Long id);
 
     Oferta getOfertaById(Long id);
+
+    List<Oferta> getAllOffersByStatus();
 }

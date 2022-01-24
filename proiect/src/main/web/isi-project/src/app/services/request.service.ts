@@ -30,6 +30,12 @@ export class RequestService {
     return  this.http.get<Request[]>(environment.apiUrl + 'cereri', {observe:'response'})
       .pipe(map((res:HttpResponse<Request[]>) => res));
   }
+
+  public getRequestsByStatus() : Observable<HttpResponse<Request[]>> {
+    return  this.http.get<Request[]>(environment.apiUrl + 'cereri/status', {observe:'response'})
+      .pipe(map((res:HttpResponse<Request[]>) => res));
+  }
+
   public getRequestById(id? : number): Observable<HttpResponse<Request>> {
     return this.http.get<Request>(`${environment.apiUrl}cereri/by-id?id=${id}`, { observe: 'response' })
       .pipe(map((res: HttpResponse<Request>) => res));

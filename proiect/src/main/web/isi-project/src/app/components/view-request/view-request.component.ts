@@ -22,6 +22,7 @@ export class ViewRequestComponent implements OnInit {
   masa: number | undefined;
   buget: number | undefined;
   volum: number | undefined;
+  status: string | undefined = ''
   detalii: string | undefined = '';
 
   constructor(private router: Router,
@@ -34,12 +35,21 @@ export class ViewRequestComponent implements OnInit {
       this.locPlecare = res.body?.locPlecare;
       this.locSosire = res.body?.locSosire;
       this.tipMarfa = res.body?.tipMarfa;
-      this.dataPlecare = res.body?.dataPlecare;
-      this.dataMaximaPlecare = res.body?.dataMaximaPlecare;
-      this.dataSosire = res.body?.dataSosire;
-      this.dataMaximaSosire = res.body?.dataMaximaSosire;
+      this.dataPlecare = new Date(res.body!.dataPlecare!).getDate().toString() + '-' +
+        new Date(res.body!.dataPlecare!).getMonth() + '-' +
+        new Date(res.body!.dataPlecare!).getFullYear();
+      this.dataMaximaPlecare = new Date(res.body!.dataMaximaPlecare!).getDate().toString() + '-' +
+        new Date(res.body!.dataMaximaPlecare!).getMonth() + '-' +
+        new Date(res.body!.dataMaximaPlecare!).getFullYear();
+      this.dataSosire = new Date(res.body!.dataSosire!).getDate().toString() + '-' +
+        new Date(res.body!.dataSosire!).getMonth() + '-' +
+        new Date(res.body!.dataSosire!).getFullYear();
+      this.dataMaximaSosire = new Date(res.body!.dataMaximaSosire!).getDate().toString() + '-' +
+        new Date(res.body!.dataMaximaSosire!).getMonth() + '-' +
+        new Date(res.body!.dataMaximaSosire!).getFullYear();
       this.masa = res.body?.masa;
       this.volum = res.body?.volum;
+      this.status = res.body?.status;
       this.detalii = res.body?.detalii;
     })
   }
