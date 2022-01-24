@@ -16,12 +16,21 @@ export class OfferDetailsComponent implements OnInit {
   request? : Request;
   offer? :Offer;
 
+  dataPlecare = '';
+  dataSosire = '';
+
   ngOnInit(): void {
     this.offerSevice.getOfferById(parseInt(this.router.url.split('/')[2]))
       .subscribe((data:any) => {
         this.offer = data.body;
         this.request = JSON.parse(localStorage.getItem('request')!);
         localStorage.setItem('offer', JSON.stringify(this.offer));
+        this.dataPlecare = new Date(this.offer!.dataPlecare!).getDate().toString() + '-' +
+          new Date(this.offer!.dataPlecare!).getMonth() + '-' +
+          new Date(this.offer!.dataPlecare!).getFullYear();
+        this.dataSosire = new Date(this.offer!.dataSosire!).getDate().toString() + '-' +
+          new Date(this.offer!.dataSosire!).getMonth() + '-' +
+          new Date(this.offer!.dataSosire!).getFullYear();
       });
 
   }

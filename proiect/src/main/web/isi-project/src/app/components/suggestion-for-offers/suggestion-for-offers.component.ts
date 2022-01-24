@@ -50,7 +50,7 @@ export class SuggestionForOffersComponent implements OnInit {
         date1 >= date2 && date2 >= date5 && date3 >= date4 &&
         date4 >= date6 &&
         this.offer?.camion?.volum! >= request.volum! &&
-      this.offer?.camion?.greutate! >= request.masa!) {
+        request.status === 'in asteptare') {
         this.suggestions.push(request);
       }
     }

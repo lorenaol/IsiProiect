@@ -46,7 +46,8 @@ export class SuggestionForRequestsComponent implements OnInit {
         this.request!.locSosire === offer?.locSosire &&
         date1 >= date2 && date2 >= date5 && date3 >= date4 &&
         date4 >= date6 &&
-        offer?.camion?.volum! >= this.request!.volum!) {
+        offer?.camion?.volum! >= this.request!.volum! &&
+        offer.status === 'in asteptare') {
         this.suggestions.push(offer);
       }
     }
