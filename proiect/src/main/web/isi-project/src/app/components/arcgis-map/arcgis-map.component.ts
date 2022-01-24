@@ -3,6 +3,11 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {setDefaultOptions, loadModules} from 'esri-loader';
 import {Observable, Subscription} from "rxjs";
 import {FirebaseService, ITestItem} from "../../database/firebase";
+import {MapService} from "@app/services/map.service";
+import {OfferService} from "@app/services/offer.service";
+import {CamionService} from "@app/services/camion.service";
+import {Router} from "@angular/router";
+import {Camion} from "@app/entities/camion";
 
 
 @Component({
@@ -25,7 +30,7 @@ export class ArcgisMapComponent implements OnInit{
   _Route: any;
   _RouteParameters : any;
   _FeatureSet: any;
-
+  trucks? :Camion[];
 
   map?: __esri.Map;
   pointGraphic?: __esri.Graphic;
@@ -41,9 +46,11 @@ export class ArcgisMapComponent implements OnInit{
   isConnected: boolean = false;
 
   item?: Observable<any>;
-
+  mapService = new MapService();
   constructor(
-    private fbs: FirebaseService
+    private fbs: FirebaseService,
+    private camionService: CamionService,
+    private router: Router,
     // private fbs: FirebaseMockService
   ) {
   }
@@ -120,15 +127,33 @@ export class ArcgisMapComponent implements OnInit{
       // Initialize the MapView
       const mapViewProperties = {
         container: this.mapViewEl?.nativeElement,
-        center: [-118.73682450024377, 34.07817583063242],
-        zoom: 10,
+        center: [	24.53, 	44.79],
+        zoom: 6,
         map: this.map
       };
 
       this.view = new MapView(mapViewProperties);
 
       // =================================================================
-      // const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+      const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+      this.camionService.getTrucksByUserId(JSON.parse(localStorage.getItem('user')!).id).subscribe((data:any) => {
+        this.trucks = data.body;
+        console.log(data.body)
+        this.view!.graphics.removeAll();
+        for(let truck of this.trucks!) {
+          const point = { //Create a point
+            type: "point",
+            longitude:  this.mapService.getCoords()[truck.locatie!][1],
+            latitude:  this.mapService.getCoords()[truck.locatie!][0]
+          };
+          if(truck.status === "preluat") {
+            this.addGraphic("preluat", point);
+          } else {
+            this.addGraphic("destination", point);
+          }
+        }
+
+      })
 
       // const eventFunction = (event : any) => {
       //   if (this.view!.graphics.length === 0) {
@@ -166,18 +191,18 @@ export class ArcgisMapComponent implements OnInit{
   }
 
   // ==========================================================================
-  // addGraphic(type : any, point : any) {
-  //   const graphic = new this._Graphic({
-  //     symbol: {
-  //       type: "simple-marker",
-  //       color: (type === "origin") ? "white" : "black",
-  //       size: "8px"
-  //     },
-  //     geometry: point
-  //   });
-  //
-  //   this.view!.graphics.add(graphic);
-  // }
+  addGraphic(type : any, point : any) {
+    const graphic = new this._Graphic({
+      symbol: {
+        type: "simple-marker",
+        color: (type === "preluat") ? "red" : "green",
+        size: "8px"
+      },
+      geometry: point
+    });
+
+    this.view!.graphics.add(graphic);
+  }
 
   getRoute(routeUrl: string) {
     const routeParams = new this._RouteParameters({

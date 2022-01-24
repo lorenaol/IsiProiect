@@ -30,7 +30,7 @@ import { environment } from '../environments/environment';
 import {FirebaseService} from "./database/firebase";
 import {FirebaseMockService} from "./database/firebase-mock";
 import { ArcgisMapComponent } from './components/arcgis-map/arcgis-map.component';
-import {NbCardModule, NbListModule} from "@nebular/theme";
+import {NbCardModule,NbListModule} from "@nebular/theme";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
@@ -49,6 +49,8 @@ import { ContractDetailsComponent } from './components/contract-details/contract
 import { MyTrucksComponent } from './components/my-trucks/my-trucks.component';
 import { AddTruckComponent } from './components/add-truck/add-truck.component';
 import { ViewTruckComponent } from './components/view-truck/view-truck.component';
+
+
 
 @NgModule({
   declarations: [

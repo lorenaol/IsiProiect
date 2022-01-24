@@ -1,7 +1,7 @@
 <button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
 <div fxLayout="row wrap"></div>
 <div>
-  <a class="title"> Contractele mele: </a>
+  <a class="title"> Contractele mele </a>
   <div *ngFor="let contract of contracts">
     <button mat-raised-button class="id-button" (click)="clickContract(contract)">
       {{contract.id}}

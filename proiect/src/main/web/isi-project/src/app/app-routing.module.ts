@@ -121,7 +121,9 @@ const routes: Routes = [
   {
     path: 'view-truck/:id',
     component: ViewTruckComponent
-  }
+  },
+  {path:'camion/:id',
+  component: MapComponent}
 
 ];
 

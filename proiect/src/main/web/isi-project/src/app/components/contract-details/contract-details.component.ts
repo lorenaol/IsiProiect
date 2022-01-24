@@ -19,6 +19,7 @@ export class ContractDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.contractService.getContractById(parseInt(this.router.url.split('/')[2])).subscribe((data:any) => {
       this.contract = data.body;
+      console.log(this.contract)
     })
   }
 
@@ -31,6 +32,10 @@ export class ContractDetailsComponent implements OnInit {
   }
   clickRequest(request: Request): void {
     this.router.navigate(['/view-request', request.id]);
+  }
+  viewMap() : void {
+    console.log( this.contract?.oferta?.camion?.id)
+    this.router.navigate(['/camion', this.contract?.oferta?.camion?.id])
   }
 
 }
