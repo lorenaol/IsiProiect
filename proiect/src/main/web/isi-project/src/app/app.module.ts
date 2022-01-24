@@ -38,6 +38,8 @@ import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { ViewOfferComponent } from './components/view-offer/view-offer.component';
 import { ViewRequestComponent } from './components/view-request/view-request.component';
+import { ViewRequestAsTransportatorComponent } from './components/view-request-as-transportator/view-request-as-transportator.component';
+import { ViewOffersAsExpeditorComponent } from './components/view-offers-as-expeditor/view-offers-as-expeditor.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { ViewRequestComponent } from './components/view-request/view-request.com
     MyOffersComponent,
     MyRequestsComponent,
     ViewOfferComponent,
-    ViewRequestComponent
+    ViewRequestComponent,
+    ViewRequestAsTransportatorComponent,
+    ViewOffersAsExpeditorComponent
   ],
   imports: [
     BrowserModule,

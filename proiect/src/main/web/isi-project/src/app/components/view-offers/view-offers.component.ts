@@ -10,21 +10,26 @@ import {OfferService} from "@app/services/offer.service";
 })
 export class ViewOffersComponent implements OnInit {
 
+  offers: Offer[] | null | undefined;
+  id: string|undefined;
+
   constructor(private router: Router,
               private offerService: OfferService) { }
 
-  oferte?: Offer[]
 
   ngOnInit(): void {
-    this.offerService.getOffer().subscribe((data:any)=>{
-      this.oferte = data.body;
+    this.offerService.getOffer().subscribe(res =>{
+      this.offers = res.body;
+      console.log(this.offers);
     })
   }
 
-  clickMenu(): void {
+  clickBack(): void {
     this.router.navigate(['/home']);
   }
-  empty(): boolean {
-    return true
+
+  clickOffer(offer: Offer): void {
+    this.id = offer.id;
+    this.router.navigate(['/view-of', offer.id]);
   }
 }

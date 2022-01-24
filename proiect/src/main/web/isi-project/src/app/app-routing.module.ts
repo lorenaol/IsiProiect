@@ -16,6 +16,8 @@ import {MyOffersComponent} from "@app/components/my-offers/my-offers.component";
 import {MyRequestsComponent} from "@app/components/my-requests/my-requests.component";
 import {ViewOfferComponent} from "@app/components/view-offer/view-offer.component";
 import {ViewRequestComponent} from "@app/components/view-request/view-request.component";
+import {ViewRequestAsTransportatorComponent} from "@app/components/view-request-as-transportator/view-request-as-transportator.component";
+import {ViewOffersAsExpeditorComponent} from "@app/components/view-offers-as-expeditor/view-offers-as-expeditor.component";
 
 const routes: Routes = [
   {
@@ -77,6 +79,14 @@ const routes: Routes = [
   {
     path: 'view-request/:id',
     component: ViewRequestComponent
+  },
+  {
+    path: 'view-req/:id',
+    component: ViewRequestAsTransportatorComponent
+  },
+  {
+    path: 'view-of/:id',
+    component: ViewOffersAsExpeditorComponent
   }
 
 ];

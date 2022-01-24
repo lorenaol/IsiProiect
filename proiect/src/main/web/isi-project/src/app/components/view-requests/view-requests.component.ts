@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {Request} from "@app/entities/request";
+import {RequestService} from "@app/services/request.service";
 
 @Component({
   selector: 'app-view-requests',
@@ -8,16 +10,28 @@ import {Router} from "@angular/router";
 })
 export class ViewRequestsComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  requests: Request[] | null | undefined;
+  id: number | undefined;
 
-  cereri?: Request[]
+  constructor(private router: Router,
+              private requestService: RequestService) { }
+
   ngOnInit(): void {
+    this.requestService.getAllRequests().subscribe(res => {
+      this.requests = res.body;
+      console.log(this.requests);
+    })
   }
 
-  clickMenu(): void {
+  clickBack(): void {
     this.router.navigate(['/home']);
   }
   empty(): boolean {
     return true
+  }
+
+  clickRequest(request: Request): void {
+    this.id = request.id;
+    this.router.navigate(['/view-req', request.id]);
   }
 }

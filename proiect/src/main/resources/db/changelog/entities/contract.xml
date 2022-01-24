@@ -34,7 +34,7 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="termen_plata"  type="TIMESTAMP">
+            <column name="termen_plata"  type="DATE">
                 <constraints nullable="false" />
             </column>
 

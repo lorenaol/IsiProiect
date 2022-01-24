@@ -37,11 +37,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="data_plecare"  type="TIMESTAMP">
+            <column name="data_plecare"  type="DATE">
                 <constraints nullable="false" />
             </column>
 
-            <column name="data_sosire"  type="TIMESTAMP">
+            <column name="data_sosire"  type="DATE">
                 <constraints nullable="false" />
             </column>
 
