@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {OfferService} from "@app/services/offer.service";
 import {RequestService} from "@app/services/request.service";
 import {Request} from "@app/entities/request";
+import {Contract} from "@app/entities/contract";
+import {ContractService} from "@app/services/contract.service";
 
 @Component({
   selector: 'app-request-details',
@@ -12,7 +14,7 @@ import {Request} from "@app/entities/request";
 })
 export class RequestDetailsComponent implements OnInit {
 
-  constructor(private router: Router, private requestService: RequestService) { }
+  constructor(private router: Router, private requestService: RequestService, private contractSevice: ContractService) { }
   request? : Request;
   offer? :Offer;
 
@@ -29,7 +31,17 @@ export class RequestDetailsComponent implements OnInit {
     this.router.navigate(['/my-offers']);
   }
   clickSimilar(): void {
-
+    let contract =new Contract();
+    contract.cerere = this.request;
+    contract.oferta = this.offer;
+    contract.camion = this.offer?.camion;
+    contract.cost = 10;
+    contract.termenPlata = new Date(this.offer?.dataPlecare!);
+    contract.locDescarcare =this.offer?.locSosire;
+    contract.locPlecare = this.offer?.locPlecare;
+    contract.detaliiMarfa = this.offer?.detalii;
+    contract.instructiuniSpeciale = this.request?.detalii;
+    this.contractSevice.addContract(contract).subscribe();
   }
 
 }

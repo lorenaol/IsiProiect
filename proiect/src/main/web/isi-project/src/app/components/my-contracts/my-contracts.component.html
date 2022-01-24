@@ -1,1 +1,11 @@
-<button mat-raised-button class="menu" (click)="clickMenu()"> Meniu </button>
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<div fxLayout="row wrap"></div>
+<div>
+  <a class="title"> Ofertele mele </a>
+  <div *ngFor="let contract of contracts">
+    <button mat-raised-button class="id-button" (click)="clickContract(contract)">
+      {{contract.id}}
+    </button>
+
+  </div>
+</div>
