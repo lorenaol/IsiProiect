@@ -33,4 +33,14 @@ public class ContractServiceImpl implements ContractService {
     public void deleteContract(Contract contract) {
         contractRepository.delete(contract);
     }
+
+    @Override
+    public List<Contract> findByUserId(Long userId) {
+        return contractRepository.findContractsByUserId(userId);
+    }
+
+    @Override
+    public Contract findById(Long id) {
+        return contractRepository.getContractById(id);
+    }
 }

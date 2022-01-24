@@ -45,6 +45,7 @@ import { RequestDetailsComponent } from './components/request-details/request-de
 import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 import { ViewRequestAsTransportatorComponent } from './components/view-request-as-transportator/view-request-as-transportator.component';
 import { ViewOffersAsExpeditorComponent } from './components/view-offers-as-expeditor/view-offers-as-expeditor.component';
+import { ContractDetailsComponent } from './components/contract-details/contract-details.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ViewOffersAsExpeditorComponent } from './components/view-offers-as-expe
     OfferDetailsComponent,
     ViewRequestComponent,
     ViewRequestAsTransportatorComponent,
-    ViewOffersAsExpeditorComponent
+    ViewOffersAsExpeditorComponent,
+    ContractDetailsComponent
   ],
   imports: [
     BrowserModule,

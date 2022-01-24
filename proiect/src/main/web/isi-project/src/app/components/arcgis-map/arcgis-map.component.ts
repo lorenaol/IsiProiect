@@ -10,7 +10,7 @@ import {FirebaseService, ITestItem} from "../../database/firebase";
   templateUrl: './arcgis-map.component.html',
   styleUrls: ['./arcgis-map.component.css']
 })
-export class ArcgisMapComponent implements OnInit, OnDestroy {
+export class ArcgisMapComponent implements OnInit{
 
   @ViewChild("mapViewNode", {static: true}) private mapViewEl?: ElementRef;
   view?: __esri.MapView;
@@ -31,7 +31,7 @@ export class ArcgisMapComponent implements OnInit, OnDestroy {
   pointGraphic?: __esri.Graphic;
   graphicsLayer?: __esri.GraphicsLayer;
 
-  pointCoords: number[] = [-118.73682450024377, 34.07817583063242]; //[lng, lat]
+  // pointCoords: number[] = [-118.73682450024377, 34.07817583063242]; //[lng, lat]
   dir: number = 0;
   count: number = 0;
 
@@ -48,32 +48,32 @@ export class ArcgisMapComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  connectFirebase() {
-    if (this.isConnected) {
-      return;
-    }
-    this.isConnected = true;
-    this.fbs.connectToDatabase();
-    this.subscriptionList = this.fbs.getChangeFeedList()?.subscribe((items: ITestItem[]) => {
-      console.log("got new items from list: ", items);
-    });
-    this.subscriptionObj = this.fbs.getChangeFeedObj()?.subscribe((stat: ITestItem[]) => {
-      console.log("item updated from object: ", stat);
-    });
-  }
-
-  addTestItem() {
-    this.fbs.addTestItem();
-  }
-
-  disconnectFirebase() {
-    if (this.subscriptionList != null) {
-      this.subscriptionList.unsubscribe();
-    }
-    if (this.subscriptionObj != null) {
-      this.subscriptionObj.unsubscribe();
-    }
-  }
+  // connectFirebase() {
+  //   if (this.isConnected) {
+  //     return;
+  //   }
+  //   this.isConnected = true;
+  //   this.fbs.connectToDatabase();
+  //   this.subscriptionList = this.fbs.getChangeFeedList()?.subscribe((items: ITestItem[]) => {
+  //     console.log("got new items from list: ", items);
+  //   });
+  //   this.subscriptionObj = this.fbs.getChangeFeedObj()?.subscribe((stat: ITestItem[]) => {
+  //     console.log("item updated from object: ", stat);
+  //   });
+  // }
+  //
+  // addTestItem() {
+  //   this.fbs.addTestItem();
+  // }
+  //
+  // disconnectFirebase() {
+  //   if (this.subscriptionList != null) {
+  //     this.subscriptionList.unsubscribe();
+  //   }
+  //   if (this.subscriptionObj != null) {
+  //     this.subscriptionObj.unsubscribe();
+  //   }
+  // }
 
   async initializeMap() {
     try {
@@ -128,32 +128,32 @@ export class ArcgisMapComponent implements OnInit, OnDestroy {
       this.view = new MapView(mapViewProperties);
 
       // =================================================================
-      const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
+      // const routeUrl = "https://route-api.arcgis.com/arcgis/rest/services/World/Route/NAServer/Route_World";
 
-      const eventFunction = (event : any) => {
-        if (this.view!.graphics.length === 0) {
-          //this.addGraphic("origin", event.mapPoint);
-        } else if (this.view!.graphics.length === 1) {
-         // this.addGraphic("destination", event.mapPoint);
-
-          this.getRoute(routeUrl);
-        } else {
-          this.view!.graphics.removeAll();
-       //   this.addGraphic("origin", event.mapPoint);
-        }
-      }
-      eventFunction.bind(this);
-
-      this.view!.on("click", eventFunction);
+      // const eventFunction = (event : any) => {
+      //   if (this.view!.graphics.length === 0) {
+      //     //this.addGraphic("origin", event.mapPoint);
+      //   } else if (this.view!.graphics.length === 1) {
+      //    // this.addGraphic("destination", event.mapPoint);
+      //
+      //     // this.getRoute(routeUrl);
+      //   } else {
+      //     this.view!.graphics.removeAll();
+      //  //   this.addGraphic("origin", event.mapPoint);
+      //   }
+      // }
+      // eventFunction.bind(this);
+      //
+      // this.view!.on("click", eventFunction);
 
       // =================================================================
 
       // Fires `pointer-move` event when user clicks on "Shift"
       // key and moves the pointer on the view.
-      this.view!.on('pointer-move', ["Shift"], (event : any) => {
-        let point = this.view!.toMap({x: event.x, y: event.y});
-        console.log("map moved: ", point.longitude, point.latitude);
-      });
+      // this.view!.on('pointer-move', ["Shift"], (event : any) => {
+      //   let point = this.view!.toMap({x: event.x, y: event.y});
+      //   console.log("map moved: ", point.longitude, point.latitude);
+      // });
 
       await this.view!.when(); // wait for map to load
       console.log("ArcGIS map loaded");
@@ -275,57 +275,57 @@ export class ArcgisMapComponent implements OnInit, OnDestroy {
   //   this.graphicsLayer!.add(this.pointGraphic!);
   // }
 
-  removePoint() {
-    if (this.pointGraphic != null) {
-      this.graphicsLayer!.remove(this.pointGraphic);
-    }
-  }
+  // removePoint() {
+  //   if (this.pointGraphic != null) {
+  //     this.graphicsLayer!.remove(this.pointGraphic);
+  //   }
+  // }
 
   runTimer() {
     this.timeoutHandler = setTimeout(() => {
       // code to execute continuously until the view is closed
       // ...
-      this.animatePointDemo();
+      // this.animatePointDemo();
       this.runTimer();
     }, 200);
   }
 
-  animatePointDemo() {
-    this.removePoint();
-    switch (this.dir) {
-      case 0:
-        this.pointCoords[1] += 0.01;
-        break;
-      case 1:
-        this.pointCoords[0] += 0.02;
-        break;
-      case 2:
-        this.pointCoords[1] -= 0.01;
-        break;
-      case 3:
-        this.pointCoords[0] -= 0.02;
-        break;
-    }
-
-    this.count += 1;
-    if (this.count >= 10) {
-      this.count = 0;
-      this.dir += 1;
-      if (this.dir > 3) {
-        this.dir = 0;
-      }
-    }
-
-    //this.addPoint(this.pointCoords[1], this.pointCoords[0]);
-
-    const movingPoint: ITestItem = {
-      name: "movingPoint",
-      lat: this.pointCoords[1],
-      lng: this.pointCoords[0]
-    };
-
-    this.fbs.db.object('movingPoint').set(movingPoint);
-  }
+  // animatePointDemo() {
+  //   this.removePoint();
+  //   switch (this.dir) {
+  //     case 0:
+  //       this.pointCoords[1] += 0.01;
+  //       break;
+  //     case 1:
+  //       this.pointCoords[0] += 0.02;
+  //       break;
+  //     case 2:
+  //       this.pointCoords[1] -= 0.01;
+  //       break;
+  //     case 3:
+  //       this.pointCoords[0] -= 0.02;
+  //       break;
+  //   }
+  //
+  //   this.count += 1;
+  //   if (this.count >= 10) {
+  //     this.count = 0;
+  //     this.dir += 1;
+  //     if (this.dir > 3) {
+  //       this.dir = 0;
+  //     }
+  //   }
+  //
+  //   //this.addPoint(this.pointCoords[1], this.pointCoords[0]);
+  //
+  //   const movingPoint: ITestItem = {
+  //     name: "movingPoint",
+  //     lat: this.pointCoords[1],
+  //     lng: this.pointCoords[0]
+  //   };
+  //
+  //   this.fbs.db.object('movingPoint').set(movingPoint);
+  // }
 
   stopTimer() {
     if (this.timeoutHandler != null) {
@@ -344,10 +344,10 @@ export class ArcgisMapComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnDestroy() {
-
-    this.stopTimer();
-    this.disconnectFirebase();
-  }
+  // ngOnDestroy() {
+  //
+  //   this.stopTimer();
+  //   this.disconnectFirebase();
+  // }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {RequestService} from "@app/services/request.service";
+import {Request} from "@app/entities/request";
 
 @Component({
   selector: 'app-view-request-as-transportator',
@@ -28,7 +29,7 @@ export class ViewRequestAsTransportatorComponent implements OnInit {
   nameUser: string | undefined = '';
   emailUser: string | undefined = '';
   phoneUser: string | undefined = '';
-
+  request? : Request
   constructor(private router: Router,
               private requestService: RequestService) { }
 
@@ -36,6 +37,7 @@ export class ViewRequestAsTransportatorComponent implements OnInit {
     this.getIdByUrl(this.router.url);
     this.id = +this.idString;
     this.requestService.getRequestById(this.id).subscribe(res => {
+      this.request = res.body!;
       this.locPlecare = res.body?.locPlecare;
       this.locSosire = res.body?.locSosire;
       this.tipMarfa = res.body?.tipMarfa;

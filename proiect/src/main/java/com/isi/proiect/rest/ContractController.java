@@ -2,6 +2,7 @@ package com.isi.proiect.rest;
 
 import com.isi.proiect.entity.Contract;
 import com.isi.proiect.service.ContractService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,5 +38,15 @@ public class ContractController {
     @DeleteMapping
     public void deleteContract(@RequestBody Contract contract) {
         contractService.deleteContract(contract);
+    }
+
+    @GetMapping(path = "/findByUserId")
+    public List<Contract> getContractByUserId(@RequestParam(value = "userId") Long id) throws NotFoundException {
+        return  contractService.findByUserId(id);
+    }
+
+    @GetMapping(path = "/findById")
+    public Contract getContractById(@RequestParam(value = "id") Long id) throws NotFoundException {
+        return  contractService.findById(id);
     }
 }

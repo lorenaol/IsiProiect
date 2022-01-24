@@ -22,6 +22,7 @@ import {ViewRequestComponent} from "@app/components/view-request/view-request.co
 import {ViewRequestAsTransportatorComponent} from "@app/components/view-request-as-transportator/view-request-as-transportator.component";
 import {ViewOffersAsExpeditorComponent} from "@app/components/view-offers-as-expeditor/view-offers-as-expeditor.component";
 import {OfferDetailsComponent} from "@app/components/offer-details/offer-details.component";
+import {ContractDetailsComponent} from "@app/components/contract-details/contract-details.component";
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
   {
     path: 'view-of/:id',
     component: ViewOffersAsExpeditorComponent
+  },
+  {
+    path: 'contract/:id',
+    component: ContractDetailsComponent
   }
 
 ];

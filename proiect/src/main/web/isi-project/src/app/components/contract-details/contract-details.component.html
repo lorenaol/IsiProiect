@@ -1,0 +1,45 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<a class="profile1">Detalii contract:</a>
+<mat-card class="card1">
+  <div class="elem-div">
+    <a class="elem">Id:</a>
+    <a class="elem2">{{contract!.id}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Loc plecare:</a>
+    <a class="elem2">{{contract!.locPlecare}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Loc sosire:</a>
+    <a class="elem2">{{contract!.locDescarcare}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Termen plata:</a>
+    <a class="elem2">{{contract!.termenPlata}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Detalii marfa:</a>
+    <a class="elem2">{{contract!.detaliiMarfa}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Instructiuni specile:</a>
+    <a class="elem2">{{contract!.instructiuniSpeciale}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Cerere:</a>
+    <a class="elem2">
+      <button mat-raised-button class="id-button" (click)="clickRequest(contract!.cerere!)">
+        #{{contract!.cerere!.id}}
+      </button></a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Oferta:</a>
+    <a class="elem2">
+      <button mat-raised-button class="id-button" (click)="clickOffer(contract!.oferta!)">
+        #{{contract!.oferta!.id}}
+      </button></a>
+  </div>
+</mat-card>
+
+
+
