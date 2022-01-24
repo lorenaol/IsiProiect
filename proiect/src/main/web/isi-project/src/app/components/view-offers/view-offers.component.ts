@@ -16,6 +16,7 @@ export class ViewOffersComponent implements OnInit {
   constructor(private router: Router,
               private offerService: OfferService) { }
 
+  oferte?: Offer[]
 
   ngOnInit(): void {
     this.offerService.getOffer().subscribe(res =>{

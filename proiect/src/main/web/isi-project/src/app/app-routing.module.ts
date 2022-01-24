@@ -12,12 +12,16 @@ import {MyContractsComponent} from "./components/my-contracts/my-contracts.compo
 import {MyProfileComponent} from "./components/my-profile/my-profile.component";
 import {ArcgisMapComponent} from "./components/arcgis-map/arcgis-map.component";
 import {EditProfileComponent} from "@app/components/edit-profile/edit-profile.component";
+import {SuggestionForOffersComponent} from "@app/components/suggestion-for-offers/suggestion-for-offers.component";
+import {SuggestionForRequestsComponent} from "@app/components/suggestion-for-requests/suggestion-for-requests.component";
 import {MyOffersComponent} from "@app/components/my-offers/my-offers.component";
 import {MyRequestsComponent} from "@app/components/my-requests/my-requests.component";
 import {ViewOfferComponent} from "@app/components/view-offer/view-offer.component";
+import {RequestDetailsComponent} from "@app/components/request-details/request-details.component";
 import {ViewRequestComponent} from "@app/components/view-request/view-request.component";
 import {ViewRequestAsTransportatorComponent} from "@app/components/view-request-as-transportator/view-request-as-transportator.component";
 import {ViewOffersAsExpeditorComponent} from "@app/components/view-offers-as-expeditor/view-offers-as-expeditor.component";
+import {OfferDetailsComponent} from "@app/components/offer-details/offer-details.component";
 
 const routes: Routes = [
   {
@@ -64,6 +68,8 @@ const routes: Routes = [
     path: 'edit-profile',
     component: EditProfileComponent
   },
+  {path:'suggestionsOff/:id', component: SuggestionForOffersComponent},
+  {path:'suggestionsReq/:id', component: SuggestionForRequestsComponent},
   {
     path: 'my-offers',
     component: MyOffersComponent
@@ -79,6 +85,14 @@ const routes: Routes = [
   {
     path: 'view-request/:id',
     component: ViewRequestComponent
+  },
+  {
+    path:"requestDetails/:id",
+    component: RequestDetailsComponent
+  },
+  {
+    path:"offerDetails/:id",
+    component: OfferDetailsComponent
   },
   {
     path: 'view-req/:id',

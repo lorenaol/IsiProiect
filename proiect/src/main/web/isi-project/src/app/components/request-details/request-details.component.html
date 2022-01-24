@@ -1,0 +1,71 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<a class="profile1">Detalii cerere:</a>
+<mat-card class="card1">
+  <div class="elem-div">
+    <a class="elem">Id:</a>
+    <a class="elem2">{{request!.id}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Loc plecare:</a>
+    <a class="elem2">{{request!.locPlecare}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Loc sosire:</a>
+    <a class="elem2">{{request!.locSosire}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Data plecare:</a>
+    <a class="elem2">{{request!.dataPlecare}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Data sosire:</a>
+    <a class="elem2">{{request!.locSosire}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Data maxima plecare:</a>
+    <a class="elem2">{{request!.dataMaximaPlecare}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Data maxima sosire:</a>
+    <a class="elem2">{{request!.dataMaximaSosire}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Masa:</a>
+    <a class="elem2">{{request!.masa}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Buget:</a>
+    <a class="elem2">{{request!.buget}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Volum:</a>
+    <a class="elem2">{{request!.volum}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Detalii:</a>
+    <a class="elem2">{{request!.detalii}}</a>
+  </div>
+</mat-card>
+
+<a class="profile2">Detalii utilizator:</a>
+<mat-card class="card2">
+  <div class="elem-div">
+    <a class="elem">Id:</a>
+    <a class="elem2">{{request!.user!.id}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Utilizatorul care a plasat cererea:</a>
+    <a class="elem2">{{request!.user!.name}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Email-ul utilizatorului:</a>
+    <a class="elem2">{{request!.user!.email}}</a>
+  </div>
+  <div class="elem-div">
+    <a class="elem">Telefonul utilizatorului:</a>
+    <a class="elem2">{{request!.user!.phone}}</a>
+  </div>
+</mat-card>
+
+<button mat-raised-button class="similar" (click)="clickSimilar()"> Preia Marfa </button>
+

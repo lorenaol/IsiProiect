@@ -14,4 +14,5 @@ public interface CerereRepository extends JpaRepository<Cerere, Long> {
 
     @Query("SELECT c FROM Cerere c WHERE c.id = ?1")
     Cerere getCerereById(Long id);
+
 }

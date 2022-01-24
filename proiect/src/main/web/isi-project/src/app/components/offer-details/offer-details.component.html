@@ -3,68 +3,68 @@
 <mat-card class="card1">
   <div class="elem-div">
     <a class="elem">Id:</a>
-    <a class="elem2">{{id}}</a>
+    <a class="elem2">{{offer!.id}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Loc plecare:</a>
-    <a class="elem2">{{locPlecare}}</a>
+    <a class="elem2">{{offer!.locPlecare}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Loc sosire:</a>
-    <a class="elem2">{{locSosire}}</a>
+    <a class="elem2">{{offer!.locSosire}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Data plecare:</a>
-    <a class="elem2">{{dataPlecare}}</a>
+    <a class="elem2">{{offer!.dataPlecare}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Data sosire:</a>
-    <a class="elem2">{{dataSosire}}</a>
+    <a class="elem2">{{offer!.dataSosire}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Pret camion gol:</a>
-    <a class="elem2">{{pretCamionGol}}</a>
+    <a class="elem2">{{offer!.pretCamionGol}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Pret camion plin:</a>
-    <a class="elem2">{{pretCamionPlin}}</a>
+    <a class="elem2">{{offer!.pretCamionPlin}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Detalii:</a>
-    <a class="elem2">{{detalii}}</a>
+    <a class="elem2">{{offer!.detalii}}</a>
   </div>
 </mat-card>
-
 <a class="profile2">Detalii camion:</a>
 <mat-card class="card2">
   <div class="elem-div">
     <a class="elem">Id:</a>
-    <a class="elem2">{{idCamion}}</a>
+    <a class="elem2">{{offer!.camion!.id}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Status:</a>
-    <a class="elem2">{{status}}</a>
+    <a class="elem2">{{offer!.camion!.status}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Locatie:</a>
-    <a class="elem2">{{locatie}}</a>
+    <a class="elem2">{{offer!.camion!.locatie}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Volum:</a>
-    <a class="elem2">{{volum}}</a>
+    <a class="elem2">{{offer!.camion!.volum}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Gabarit:</a>
-    <a class="elem2">{{gabarit}}</a>
+    <a class="elem2">{{offer!.camion!.gabarit}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Greutate:</a>
-    <a class="elem2">{{greutate}}</a>
+    <a class="elem2">{{offer!.camion!.greutate}}</a>
   </div>
   <div class="elem-div">
     <a class="elem">Detalii:</a>
-    <a class="elem2">{{detaliiCamion}}</a>
+    <a class="elem2">{{offer!.camion!.detalii}}</a>
   </div>
 </mat-card>
 
-<button mat-raised-button class="similar" (click)="clickSimilar()"> Sugestii </button>
+<button mat-raised-button class="similar" (click)="clickSimilar()"> Rezerva camion </button>
+

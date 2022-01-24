@@ -49,7 +49,7 @@ export class ViewRequestComponent implements OnInit {
   }
 
   clickSimilar(): void {
-
+    this.router.navigate(['/suggestionsReq', this.id])
   }
 
   getIdByUrl(url: string): void {

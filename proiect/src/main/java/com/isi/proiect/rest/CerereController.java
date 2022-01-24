@@ -49,4 +49,5 @@ public class CerereController {
     public void deleteCerere(@RequestBody Cerere cerere) {
         cerereService.deleteCerere(cerere);
     }
+
 }

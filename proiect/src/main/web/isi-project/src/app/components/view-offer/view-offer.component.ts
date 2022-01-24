@@ -37,6 +37,7 @@ export class ViewOfferComponent implements OnInit {
     this.getIdByUrl(this.router.url);
     this.id = +this.idString;
     this.offerService.getOfferById(this.id).subscribe(res => {
+      this.offer = res.body;
       this.locPlecare = res.body?.locPlecare;
       this.locSosire = res.body?.locSosire;
       this.dataPlecare = res.body?.dataPlecare;
@@ -61,7 +62,7 @@ export class ViewOfferComponent implements OnInit {
   }
 
   clickSimilar(): void {
-
+    this.router.navigate(['/suggestionsOff', this.id])
   }
 
   getIdByUrl(url: string): void {

@@ -1,0 +1,12 @@
+<button mat-raised-button class="back" (click)="clickBack()"> Inapoi </button>
+<div fxLayout="row wrap"></div>
+<div>
+  <a class="title"> Sugestii de cereri </a>
+  <!--  <app-view-offer [selectedId]="id"></app-view-offer>-->
+  <div *ngFor="let request of requests">
+    <button mat-raised-button class="id-button" (click)="clickRequest(request)">
+      {{request.id}}
+    </button>
+
+  </div>
+</div>

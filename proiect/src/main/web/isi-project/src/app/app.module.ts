@@ -34,10 +34,15 @@ import {NbCardModule, NbListModule} from "@nebular/theme";
 import {HttpClientModule} from "@angular/common/http";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import {SuggestionForRequestsComponent} from "@app/components/suggestion-for-requests/suggestion-for-requests.component";
+import {SuggestionForOffersComponent} from "@app/components/suggestion-for-offers/suggestion-for-offers.component";
+
 import { MyOffersComponent } from './components/my-offers/my-offers.component';
 import { MyRequestsComponent } from './components/my-requests/my-requests.component';
 import { ViewOfferComponent } from './components/view-offer/view-offer.component';
 import { ViewRequestComponent } from './components/view-request/view-request.component';
+import { RequestDetailsComponent } from './components/request-details/request-details.component';
+import { OfferDetailsComponent } from './components/offer-details/offer-details.component';
 import { ViewRequestAsTransportatorComponent } from './components/view-request-as-transportator/view-request-as-transportator.component';
 import { ViewOffersAsExpeditorComponent } from './components/view-offers-as-expeditor/view-offers-as-expeditor.component';
 
@@ -60,6 +65,14 @@ import { ViewOffersAsExpeditorComponent } from './components/view-offers-as-expe
     MyOffersComponent,
     MyRequestsComponent,
     ViewOfferComponent,
+    EditProfileComponent,
+    MyProfileComponent,
+    SuggestionForOffersComponent,
+    SuggestionForRequestsComponent,
+    RequestDetailsComponent,
+    ViewOfferComponent,
+    ViewRequestComponent,
+    OfferDetailsComponent,
     ViewRequestComponent,
     ViewRequestAsTransportatorComponent,
     ViewOffersAsExpeditorComponent

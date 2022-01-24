@@ -19,6 +19,7 @@ export class MyOffersComponent implements OnInit {
               private offerService: OfferService) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('offer')
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.offerService.getOffersByUserId(this.user?.id).subscribe(res => {
       this.myOffers = res.body;

@@ -44,4 +44,6 @@ public class CerereServiceImpl implements CerereService {
     public Cerere getCerereById(Long id) {
         return cerereRepository.getCerereById(id);
     }
+
+
 }
