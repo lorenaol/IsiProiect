@@ -6,6 +6,7 @@ import {RequestService} from "@app/services/request.service";
 import {Request} from "@app/entities/request";
 import {Contract} from "@app/entities/contract";
 import {ContractService} from "@app/services/contract.service";
+import {MapService} from "@app/services/map.service";
 
 @Component({
   selector: 'app-request-details',
@@ -14,7 +15,7 @@ import {ContractService} from "@app/services/contract.service";
 })
 export class RequestDetailsComponent implements OnInit {
 
-  constructor(private router: Router, private requestService: RequestService, private contractSevice: ContractService) { }
+  constructor(private router: Router, private mapService : MapService, private requestService: RequestService, private contractSevice: ContractService) { }
   request? : Request;
   offer? :Offer;
 
@@ -48,11 +49,18 @@ export class RequestDetailsComponent implements OnInit {
     this.router.navigate(['/my-offers']);
   }
   clickSimilar(): void {
+    let dist = Math.sqrt((this.mapService.getCoords()[this.offer?.locSosire!][1] -
+      this.mapService.getCoords()[this.offer?.locPlecare!][1]) * (this.mapService.getCoords()[this.offer?.locSosire!][1] -
+      this.mapService.getCoords()[this.offer?.locPlecare!][1]) +
+      (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][0]) * (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][0]));
+    let km = dist*100;
     let contract =new Contract();
     contract.cerere = this.request;
     contract.oferta = this.offer;
     contract.camion = this.offer?.camion;
-    contract.cost = 10;
+    contract.cost = km*this.offer?.pretCamionGol! + km*this.offer?.pretCamionPlin!;
     contract.termenPlata = new Date(this.offer?.dataPlecare!);
     contract.locDescarcare =this.offer?.locSosire;
     contract.locPlecare = this.offer?.locPlecare;
