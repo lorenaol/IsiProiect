@@ -4,6 +4,7 @@ import {RequestService} from "@app/services/request.service";
 import {Request} from "@app/entities/request";
 import {OfferService} from "@app/services/offer.service";
 import {Router} from "@angular/router";
+import {MapService} from "@app/services/map.service";
 
 @Component({
   selector: 'app-suggestion-for-offers',
@@ -19,9 +20,11 @@ export class SuggestionForOffersComponent implements OnInit {
   suggestions : Request[] = []
   id? : number
 
-  constructor(private router: Router, requestService: RequestService, offerService: OfferService) {
+  constructor(private router: Router, requestService: RequestService, offerService: OfferService,
+              private mapService : MapService) {
     this.requestService = requestService;
     this.offerService = offerService;
+
   }
 
   ngOnInit(): void {
@@ -45,12 +48,19 @@ export class SuggestionForOffersComponent implements OnInit {
       let date3 = new Date(request.dataMaximaSosire!);
       let date4 = new Date(this.offer?.dataSosire!);
       let date6 = new Date(request.dataSosire!);
+      let dist = Math.sqrt((this.mapService.getCoords()[this.offer?.locSosire!][1] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][1]) * (this.mapService.getCoords()[this.offer?.locSosire!][1] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][1]) +
+        (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+          this.mapService.getCoords()[this.offer?.locPlecare!][0]) * (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+          this.mapService.getCoords()[this.offer?.locPlecare!][0]));
+      let km = dist*100;
       if(request.locPlecare === this.offer?.locPlecare &&
       request.locSosire === this.offer?.locSosire &&
         date1 >= date2 && date2 >= date5 && date3 >= date4 &&
         date4 >= date6 &&
         this.offer?.camion?.volum! >= request.volum! &&
-        request.status === 'in asteptare') {
+        request.status === 'in asteptare' && (km*this.offer?.pretCamionGol! + km*this.offer?.pretCamionPlin!) <= request.buget!  ) {
         this.suggestions.push(request);
       }
     }

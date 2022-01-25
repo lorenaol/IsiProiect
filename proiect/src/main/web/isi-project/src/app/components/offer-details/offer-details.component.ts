@@ -7,6 +7,7 @@ import {Offer} from "@app/entities/offer";
 import {ContractService} from "@app/services/contract.service";
 import {Contract} from "@app/entities/contract";
 import {CamionService} from "@app/services/camion.service";
+import {MapService} from "@app/services/map.service";
 
 @Component({
   selector: 'app-offer-details',
@@ -16,6 +17,7 @@ import {CamionService} from "@app/services/camion.service";
 export class OfferDetailsComponent implements OnInit {
 
   constructor(private router: Router,
+              private mapService : MapService,
               private offerSevice: OfferService,
               private requestService: RequestService,
               private contractSevice: ContractService,
@@ -45,6 +47,13 @@ export class OfferDetailsComponent implements OnInit {
     this.router.navigate(['/my-requests']);
   }
   clickSimilar(): void {
+    let dist = Math.sqrt((this.mapService.getCoords()[this.offer?.locSosire!][1] -
+      this.mapService.getCoords()[this.offer?.locPlecare!][1]) * (this.mapService.getCoords()[this.offer?.locSosire!][1] -
+      this.mapService.getCoords()[this.offer?.locPlecare!][1]) +
+      (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][0]) * (this.mapService.getCoords()[this.offer?.locSosire!][0] -
+        this.mapService.getCoords()[this.offer?.locPlecare!][0]));
+    let km = dist*100;
     this.camionService.setStatus("preluat", this.offer?.camion?.id).subscribe(() => {
       this.offerSevice.setStatus("acceptata", this.offer?.id).subscribe(() => {
         this.requestService.setStatus("acceptata", this.request?.id).subscribe(() => {
@@ -52,7 +61,7 @@ export class OfferDetailsComponent implements OnInit {
           contract.cerere = this.request;
           contract.oferta = this.offer;
           contract.camion = this.offer?.camion;
-          contract.cost = 10;
+          contract.cost = km*this.offer?.pretCamionGol! + km*this.offer?.pretCamionPlin!;
           contract.termenPlata = new Date(this.offer?.dataPlecare!);
           contract.locDescarcare =this.offer?.locSosire;
           contract.locPlecare = this.offer?.locPlecare;
