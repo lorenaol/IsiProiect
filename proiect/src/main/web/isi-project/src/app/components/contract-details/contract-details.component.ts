@@ -17,6 +17,7 @@ export class ContractDetailsComponent implements OnInit {
   contract?: Contract
 
   ngOnInit(): void {
+    this.contract =JSON.parse( localStorage.getItem("contract")!);
     this.contractService.getContractById(parseInt(this.router.url.split('/')[2])).subscribe((data:any) => {
       this.contract = data.body;
       console.log(this.contract)

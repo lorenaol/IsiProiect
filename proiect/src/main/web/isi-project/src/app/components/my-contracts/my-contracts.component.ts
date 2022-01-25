@@ -31,6 +31,7 @@ export class MyContractsComponent implements OnInit {
   }
 
   clickContract(contract: Contract): void {
+    localStorage.setItem("contract", JSON.stringify( contract))
     this.router.navigate(['/contract', contract.id]);
   }
 }

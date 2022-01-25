@@ -5,6 +5,7 @@ import {RequestService} from "@app/services/request.service";
 import {OfferService} from "@app/services/offer.service";
 import {Router} from "@angular/router";
 import {of} from "rxjs";
+import {MapService} from "@app/services/map.service";
 
 @Component({
   selector: 'app-suggestion-for-requests',
@@ -19,7 +20,8 @@ export class SuggestionForRequestsComponent implements OnInit {
   suggestions : Offer[] = []
   id? : number
 
-  constructor(private router: Router, private requestService: RequestService, private offerService: OfferService) { }
+  constructor(private router: Router, private mapService : MapService,
+              private requestService: RequestService, private offerService: OfferService) { }
 
   ngOnInit(): void {
     this.requestService.getRequestById(parseInt(this.router.url.split('/')[2])).subscribe((data:any) => {
@@ -42,12 +44,19 @@ export class SuggestionForRequestsComponent implements OnInit {
       let date3 = new Date(this.request!.dataMaximaSosire!);
       let date4 = new Date(offer?.dataSosire!);
       let date6 = new Date(this.request!.dataSosire!);
+      let dist = Math.sqrt((this.mapService.getCoords()[offer?.locSosire!][1] -
+        this.mapService.getCoords()[offer?.locPlecare!][1]) * (this.mapService.getCoords()[offer?.locSosire!][1] -
+        this.mapService.getCoords()[offer?.locPlecare!][1]) +
+        (this.mapService.getCoords()[offer?.locSosire!][0] -
+          this.mapService.getCoords()[offer?.locPlecare!][0]) * (this.mapService.getCoords()[offer?.locSosire!][0] -
+          this.mapService.getCoords()[offer?.locPlecare!][0]));
+      let km = dist*100;
       if(this.request!.locPlecare === offer?.locPlecare &&
         this.request!.locSosire === offer?.locSosire &&
         date1 >= date2 && date2 >= date5 && date3 >= date4 &&
         date4 >= date6 &&
         offer?.camion?.volum! >= this.request!.volum! &&
-        offer.status === 'in asteptare') {
+        offer.status === 'in asteptare' && (km*offer?.pretCamionGol! + km*offer?.pretCamionPlin!) <= this.request!.buget!  ) {
         this.suggestions.push(offer);
       }
     }

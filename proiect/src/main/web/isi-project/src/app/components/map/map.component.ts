@@ -195,7 +195,8 @@ export class MapComponent implements OnInit {
     }
   }
 
-  dir: number = 0;
+  dir: number = 1;
+  dir2: number = 1;
   count: number = 0;
   data :any
   animatePointDemo() {
@@ -206,10 +207,17 @@ export class MapComponent implements OnInit {
     let latitude2 =  this.mapService.getCoords()[this.contract?.oferta?.locSosire!][0];
     let diff = latitude -latitude2;
     let diff2 = longitude- longitude2;
-    if(this.count < 10) {
-      this.pointCoords![0] += diff2/10;
-      this.pointCoords![1] += diff/10;
+    if(diff > 0) {
+      this.dir = -1
     }
+    if(diff2 < 0) {
+      this.dir2 = -1;
+    }
+    if(this.count < 10) {
+      this.pointCoords![0] += (this.dir2)*diff2/10;
+      this.pointCoords![1] += (this.dir)*diff/10;
+    }
+    this.count += 1;
 
     // switch (this.dir) {
     //   case 0:
@@ -252,7 +260,7 @@ export class MapComponent implements OnInit {
       // ...
       this.animatePointDemo();
       this.runTimer();
-    }, 200);
+    }, 500);
   }
 
 
@@ -351,15 +359,16 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.contractService.getContractById(parseInt(this.router.url.split('/')[2])).subscribe((data:any) => {
       this.contract = data.body!;
+      console.log(this.contract)
+      this.initializeMap().then(() => {
+        console.log(this.pointCoords)
+        this.runTimer();
+      }).catch((err) => {
+        console.error(err);
+        alert("An error occured while loading the map");
+      })
+    })
 
-    })
-    this.initializeMap().then(() => {
-      console.log(this.pointCoords)
-      this.runTimer();
-    }).catch((err) => {
-      console.error(err);
-      alert("An error occured while loading the map");
-    })
   }
 
 
