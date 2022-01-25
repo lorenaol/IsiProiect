@@ -40,4 +40,19 @@
         </createTable>
     </changeSet>
 
+
+    <changeSet id="3" author="lorena">
+        <loadData
+                file="classpath:db/changelog/data/users.csv"
+                separator=";"
+                tableName="users">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="email" type="string"/>
+            <column name="pass" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="role" type="string"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

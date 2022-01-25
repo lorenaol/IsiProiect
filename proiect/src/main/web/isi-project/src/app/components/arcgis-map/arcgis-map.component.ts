@@ -8,6 +8,7 @@ import {OfferService} from "@app/services/offer.service";
 import {CamionService} from "@app/services/camion.service";
 import {Router} from "@angular/router";
 import {Camion} from "@app/entities/camion";
+import {Offer} from "@app/entities/offer";
 
 
 @Component({
@@ -51,6 +52,7 @@ export class ArcgisMapComponent implements OnInit{
     private fbs: FirebaseService,
     private camionService: CamionService,
     private router: Router,
+    private offerService: OfferService
     // private fbs: FirebaseMockService
   ) {
   }
@@ -154,6 +156,56 @@ export class ArcgisMapComponent implements OnInit{
         }
 
       })
+
+      this.view!.popup.autoOpenEnabled = false;
+      this.view!.on("click", (event) => {
+        let tr : Camion;
+        let off : Offer;
+        for(let truck of this.trucks!) {
+          let longitude =  this.mapService.getCoords()[truck.locatie!][1];
+          let latitude =  this.mapService.getCoords()[truck.locatie!][0];
+          if((longitude <= event.mapPoint.longitude + 0.5 || longitude >= event.mapPoint.longitude - 0.5)&&
+            (latitude <= event.mapPoint.latitude + 0.5 || latitude >= event.mapPoint.latitude - 0.5) ){
+            tr = truck;
+            this.offerService.getOffer().subscribe((data: any)=>{
+              console.log(data.body)
+              if(data.body) {
+                for(let offer of data.body) {
+                  if(offer.camion.id == tr.id) {
+                    off = offer;
+                  }
+                }
+              }
+              let msg : string;
+              if(!off) {
+                msg = 'Nu a fost publicata nici o oferta pentru acest camion'
+              } else {
+                msg = "De la : " + off!.locPlecare + " La : "+ off!.locSosire + ". Data plecare : " +
+                  new Date(off!.dataPlecare!).getDate().toString()
+                  + '-' +
+                  new Date(off!.dataPlecare!).getMonth() + '-' +
+                  new Date(off!.dataPlecare!).getFullYear()
+                + "; Data sosire:" + new Date(off!.dataSosire!).getDate().toString()
+                  + '-' +
+                  new Date(off!.dataSosire!).getMonth() + '-' +
+                  new Date(off!.dataSosire!).getFullYear()
+              }
+              this.view!.popup.open({
+                // Set the popup
+                location: event.mapPoint,  // location of the click on the view
+                title: "Id Camion : " + tr!.id,  // title displayed in the popup
+                content: msg
+              });
+            })
+          }
+        }
+
+
+      });
+//       “De la: AAA” si “La: BBB”
+// unde AAA este locul plecării și BBB este locul sosirii (De ex: “De la Giurgiu”, “La
+//       Oradea”). Se vor afișa și două câmpuri de tip dată calendaristică, “Data plecare: ” si
+// “Data sosire:
 
       // const eventFunction = (event : any) => {
       //   if (this.view!.graphics.length === 0) {

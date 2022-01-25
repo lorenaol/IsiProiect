@@ -20,7 +20,9 @@
     <a class="text">Datele mele</a>
   </button>
   <button mat-raised-button class="myTrucks" (click)="clickMyTrucks()">
-    <a class="text">Camioanele mele</a>
+    <a class="text">Camioanele</a>
+    <br>
+    <a class="text">mele</a>
   </button>
 <!--  <div *ngIf ="transportator()">-->
   <button mat-raised-button class="viewButton" (click)="clickViewRequests()">
@@ -63,6 +65,56 @@
     <a class="text">mele</a>
   </button>
   <button mat-raised-button class="logoutButton2" (click)="logout()">
+    <a class="text">Log out</a>
+  </button>
+</div>
+
+<div *ngIf ="admin()" class="adminButtons">
+  <!--  <div *ngIf ="transportator()">-->
+  <button mat-raised-button class="adminCreateButton" (click)="clickCreateRequest()">
+    <a class="text">Creeaza</a>
+    <br>
+    <a class="text">cerere</a>
+  </button>
+
+  <button mat-raised-button class="adminCreateButton2" (click)="clickCreateOffer()">
+    <a class="text">Creeaza</a>
+    <br>
+    <a class="text">oferta</a>
+  </button>
+  <!--  </div>-->
+  <button mat-raised-button color="" class="adminmapButton" (click)="clickMap()">
+    <a class="text">Harta</a>
+  </button>
+  <button mat-raised-button class="adminmyTrucks" (click)="clickMyTrucks()">
+    <a class="text">Camioanele</a>
+    <br>
+    <a class="text">mele</a>
+  </button>
+  <!--  <div *ngIf ="transportator()">-->
+  <button mat-raised-button class="adminviewButton" (click)="clickViewRequests()">
+    <a class="text">Vizualizare</a>
+    <br>
+    <a class="text">cereri</a>
+  </button>
+  <button mat-raised-button class="adminviewButton2" (click)="clickViewOffers()">
+    <a class="text">Vizualizare</a>
+    <br>
+    <a class="text">oferte</a>
+  </button>
+  <!--  </div>-->
+  <button mat-raised-button class="adminprofileButton2" (click)="clickMyProfile()">
+    <a class="text">Datele mele</a>
+  </button>
+  <!--  <div *ngIf ="transportator()">-->
+
+  <!--  </div>-->
+  <button mat-raised-button class="adminfilesButton2" (click)="clickMyContracts()">
+    <a class="text">Contractele</a>
+    <br>
+    <a class="text">mele</a>
+  </button>
+  <button mat-raised-button class="adminlogoutButton2" (click)="logout()">
     <a class="text">Log out</a>
   </button>
 </div>

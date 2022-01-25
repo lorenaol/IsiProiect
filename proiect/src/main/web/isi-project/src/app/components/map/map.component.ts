@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
   @ViewChild("mapViewNode", {static: true}) private mapViewEl?: ElementRef;
   view?: __esri.MapView;
   timeoutHandler : any = null;
-
+  pointCoords?: number[]; //[lng, lat]
   _EsriConfig : any;
   _Map: any;
   _MapView : any;
@@ -30,7 +30,10 @@ export class MapComponent implements OnInit {
 
   contract? :Contract;
   mapService = new MapService();
+  isConnected: boolean = false;
 
+  subscriptionList?: Subscription;
+  subscriptionObj?: Subscription;
 
   map?: __esri.Map;
 
@@ -42,6 +45,19 @@ export class MapComponent implements OnInit {
 
   ) {
 
+  }
+  connectFirebase() {
+    if (this.isConnected) {
+      return;
+    }
+    this.isConnected = true;
+    this.fbs.connectToDatabase();
+    this.subscriptionList = this.fbs!.getChangeFeedList()!.subscribe((items: ITestItem[]) => {
+      console.log("got new items from list: ", items);
+    });
+    this.subscriptionObj = this.fbs.getChangeFeedObj()!.subscribe((stat: ITestItem[]) => {
+      console.log("item updated from object: ", stat);
+    });
   }
 
 
@@ -105,28 +121,20 @@ export class MapComponent implements OnInit {
         longitude:  this.mapService.getCoords()[this.contract?.oferta?.locSosire!][1],
         latitude:  this.mapService.getCoords()[this.contract?.oferta?.locSosire!][0]
       };
+      const point3 = { //Create a point
+        type: "point",
+        longitude:  this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][1],
+        latitude:  this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][0]
+      };
+      this.addPoint( this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][1],
+        this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][0]);
       this.addGraphic("origin", point2);
       this.addGraphic("destination", point);
+      this.addGraphic("truck", point3);
+      this.pointCoords = [this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][1],
+        this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][0]];
+      console.log(this.pointCoords)
       this.getRoute(routeUrl);
-      // const eventFunction = (event:any) => {
-      //   console.log(event.mapPoint)
-      //   if (this.view!.graphics.length === 0) {
-      //     this.addGraphic("origin", point2);
-      //   } else if (this.view!.graphics.length === 1) {
-      //     this.addGraphic("destination", point);
-      //
-      //     this.getRoute(routeUrl);
-      //   } else {
-      //     this.view!.graphics.removeAll();
-      //     this.addGraphic("origin", point2);
-      //   }
-      // }
-      // eventFunction.bind(this);
-
-      // this.view!.on("click", eventFunction);
-
-
-
 
       // =================================================================
 
@@ -147,7 +155,7 @@ export class MapComponent implements OnInit {
     const graphic = new this._Graphic({
       symbol: {
         type: "simple-marker",
-        color: (type === "origin") ? "white" : "black",
+        color: (type === "origin") ? "white" : (type === "truck")? "red" : "black",
         size: "8px"
       },
       geometry: point
@@ -155,6 +163,98 @@ export class MapComponent implements OnInit {
     console.log(point)
     this.view!.graphics.add(graphic);
   }
+  graphicsLayer?: __esri.GraphicsLayer;
+  pointGraphic?: __esri.Graphic;
+  addPoint(lat: number, lng: number) {
+    this.graphicsLayer = new this._GraphicsLayer();
+    this.map!.add(this.graphicsLayer!);
+    const point = { //Create a point
+      type: "point",
+      longitude: lng,
+      latitude: lat
+    };
+    const simpleMarkerSymbol = {
+      type: "simple-marker",
+      color: [226, 119, 40],  // Orange
+      outline: {
+        color: [255, 255, 255], // White
+        width: 1
+      }
+    };
+    this.pointGraphic = new this._Graphic({
+      geometry: point,
+      symbol: simpleMarkerSymbol
+    });
+    this.graphicsLayer!.add(this.pointGraphic!);
+  }
+
+
+  removePoint() {
+    if (this.pointGraphic != null) {
+      this.graphicsLayer!.remove(this.pointGraphic);
+    }
+  }
+
+  dir: number = 0;
+  count: number = 0;
+  data :any
+  animatePointDemo() {
+    this.removePoint();
+    let longitude =  this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][1];
+      let latitude =  this.mapService.getCoords()[this.contract?.oferta?.locPlecare!][0];
+    let longitude2 =  this.mapService.getCoords()[this.contract?.oferta?.locSosire!][1];
+    let latitude2 =  this.mapService.getCoords()[this.contract?.oferta?.locSosire!][0];
+    let diff = latitude -latitude2;
+    let diff2 = longitude- longitude2;
+    if(this.count < 10) {
+      this.pointCoords![0] += diff2/10;
+      this.pointCoords![1] += diff/10;
+    }
+
+    // switch (this.dir) {
+    //   case 0:
+    //     this.pointCoords![1] += 0.01;
+    //     break;
+    //   case 1:
+    //     this.pointCoords![0] += 0.02;
+    //     break;
+    //   case 2:
+    //     this.pointCoords![1] -= 0.01;
+    //     break;
+    //   case 3:
+    //     this.pointCoords![0] -= 0.02;
+    //     break;
+    // }
+    //
+    // this.count += 1;
+    // if (this.count >= 10) {
+    //   this.count = 0;
+    //   this.dir += 1;
+    //   if (this.dir > 3) {
+    //     this.dir = 0;
+    //   }
+    // }
+
+    this.addPoint(this.pointCoords![1], this.pointCoords![0]);
+
+    const movingPoint: ITestItem = {
+      name: "movingPoint",
+      lat: this.pointCoords![1],
+      lng: this.pointCoords![0]
+    };
+
+    this.fbs.db.object('movingPoint').set(movingPoint);
+  }
+
+  runTimer() {
+    this.timeoutHandler = setTimeout(() => {
+      // code to execute continuously until the view is closed
+      // ...
+      this.animatePointDemo();
+      this.runTimer();
+    }, 200);
+  }
+
 
   getRoute(routeUrl: string) {
     const routeParams = new this._RouteParameters({
@@ -163,16 +263,20 @@ export class MapComponent implements OnInit {
       }),
       returnDirections: true
     });
+    console.log(typeof(routeParams.features))
 
     this._Route.solve(routeUrl, routeParams)
       .then(function (this: MapComponent, data : any) {
+        this.data = data
         data.routeResults.forEach(function (this: MapComponent, result : any) {
+
           result.route.symbol = {
             type: "simple-line",
             color: [5, 150, 255],
             width: 3
           };
           this.view!.graphics.add(result.route);
+          console.log(result.route.symbol)
         }.bind(this));
 
         if (data.routeResults.length > 0) {
@@ -183,13 +287,15 @@ export class MapComponent implements OnInit {
           directions.style.marginTop = "0";
           directions.style.padding = "15px 15px 15px 30px";
           const features = data.routeResults[0].directions.features;
+          // console.log(typeof(data.routeResults[0].directions.features))
 
           features.forEach(function (result : any, i : any ) {
             const direction = document.createElement("li");
             direction.innerHTML = result.attributes.text + " (" + result.attributes.length.toFixed(2) + " miles)";
             directions.appendChild(direction);
+            // console.log(directions)
           });
-
+          console.log(directions)
           this.view!.ui.empty("top-right");
           this.view!.ui.add(directions, "top-right");
         }
@@ -230,14 +336,7 @@ export class MapComponent implements OnInit {
   }
 
 
-  runTimer() {
-    this.timeoutHandler = setTimeout(() => {
-      // code to execute continuously until the view is closed
-      // ...
-      // this.animatePointDemo();
-      this.runTimer();
-    }, 200);
-  }
+
 
 
 
@@ -255,6 +354,7 @@ export class MapComponent implements OnInit {
 
     })
     this.initializeMap().then(() => {
+      console.log(this.pointCoords)
       this.runTimer();
     }).catch((err) => {
       console.error(err);

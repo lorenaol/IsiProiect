@@ -59,4 +59,9 @@ export class HomeComponent implements OnInit {
     if (this.role == 'Expeditor') return true;
     return false;
   }
+  admin() : boolean {
+    if (this.role == ' admin') {
+      return true;}
+    return false;
+  }
 }

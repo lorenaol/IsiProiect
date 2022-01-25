@@ -129,3 +129,76 @@
 .text {
   font-size: xx-large;
 }
+
+.adminCreateButton {
+  margin-left: 3%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #0a0abd;
+  font-weight: bold;
+}
+.adminCreateButton2 {
+  margin-left: 5%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #0a0abd;
+  font-weight: bold;
+}
+.adminmapButton {
+  margin-left: 7%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: #11a011;
+  font-weight: bold;
+}
+.adminmyTrucks {
+  margin-left: 9%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: black;
+  font-weight: bold;
+}
+.adminviewButton {
+  margin-left: 11%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #a5432a;
+  font-weight: bold;
+}
+.adminviewButton2 {
+  margin-left: 13%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #a5432a;
+  font-weight: bold;
+}
+.adminprofileButton2 {
+  margin-left: 15%;
+  margin-top: 10%;
+  width: 16%;
+  height: 20%;
+  color: purple;
+  font-weight: bold;
+}
+.adminfilesButton2 {
+  margin-left: 17%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: orange;
+  font-weight: bold;
+}
+.adminlogoutButton2 {
+  margin-left: 19%;
+  margin-top: 6%;
+  width: 16%;
+  height: 20%;
+  color: #ee0606;
+  font-weight: bold;
+}
