@@ -61,7 +61,7 @@ export class RequestDetailsComponent implements OnInit {
     contract.oferta = this.offer;
     contract.camion = this.offer?.camion;
     contract.cost = km*this.offer?.pretCamionGol! + km*this.offer?.pretCamionPlin!;
-    contract.termenPlata = new Date(this.offer?.dataPlecare!);
+    contract.termenPlata = new Date(this.offer!.dataPlecare!);
     contract.locDescarcare =this.offer?.locSosire;
     contract.locPlecare = this.offer?.locPlecare;
     contract.detaliiMarfa = this.offer?.detalii;
