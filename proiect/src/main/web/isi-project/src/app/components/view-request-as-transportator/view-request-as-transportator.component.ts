@@ -69,7 +69,7 @@ export class ViewRequestAsTransportatorComponent implements OnInit {
   }
 
   clickAccept(): void {
-
+    this.router.navigate(['/home']);
   }
 
   getIdByUrl(url: string): void {

@@ -58,7 +58,9 @@ export class RequestDetailsComponent implements OnInit {
     contract.locPlecare = this.offer?.locPlecare;
     contract.detaliiMarfa = this.offer?.detalii;
     contract.instructiuniSpeciale = this.request?.detalii;
-    this.contractSevice.addContract(contract).subscribe();
+    this.contractSevice.addContract(contract).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 
 }
